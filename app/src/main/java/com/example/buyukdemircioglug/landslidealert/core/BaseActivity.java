@@ -1,7 +1,10 @@
 package com.example.buyukdemircioglug.landslidealert.core;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -16,6 +19,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (savedInstanceState == null) {
+
+            final Fragment fragment = getContainedFragment();
+
+            if (fragment != null) {
+                addFragmentToActivity(getSupportFragmentManager(), fragment, getBaseFrameLayoutId());
+            }
+        }
+
         ButterKnife.bind(this);
 
         setContentView(getContentResourceId());
@@ -29,6 +41,21 @@ public abstract class BaseActivity extends AppCompatActivity {
             toolbar.setVisibility(View.GONE);
         }
     }
+
+    /**
+     * The {@code fragment} is added to the container view with id {@code frameId}. The operation is
+     * performed by the {@code fragmentManager}.
+     *
+     */
+    public static void addFragmentToActivity (@NonNull FragmentManager fragmentManager,
+                                              @NonNull Fragment fragment,
+                                              int frameId) {
+
+        final FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(frameId, fragment);
+        transaction.commit();
+    }
+
 
     /**
      * Method to get activity's UI content frame layout resource id.
@@ -49,13 +76,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * Get initial fragment instance.
-     *
-     * @return Fragment.
-     */
-    protected abstract Fragment getContainedFragment();
-
-    /**
      * Get whether activity has a toolbar.
      *
      * @return true if activity has a toolbar, false otherwise
@@ -63,5 +83,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected boolean hasToolbar() {
         return false;
     }
+
+    /**
+     * Get initial fragment instance.
+     *
+     * @return Fragment.
+     */
+    protected abstract Fragment getContainedFragment();
 
 }
