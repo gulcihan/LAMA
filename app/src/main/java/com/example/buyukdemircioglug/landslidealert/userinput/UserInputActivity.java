@@ -8,7 +8,7 @@ public class UserInputActivity extends BaseActivity {
 
     @Override
     protected Fragment getContainedFragment() {
-        return null;
+        return new UserInputFragmentBuilder().build();
     }
 
     @Override

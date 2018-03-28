@@ -27,10 +27,12 @@ import android.widget.TextView;
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
 import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
+import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 /**
  * Main UI for the task detail screen.
  */
+@FragmentWithArgs
 public class UserInputFragment extends BaseFragment {
 
     private TextView mDetailTitle;
