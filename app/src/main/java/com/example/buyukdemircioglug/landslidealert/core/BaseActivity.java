@@ -25,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (hasToolbar()) {
             setSupportActionBar(toolbar);
 
-        } else {
+        } else if (toolbar != null) {
             toolbar.setVisibility(View.GONE);
         }
     }
