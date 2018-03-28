@@ -1,8 +1,10 @@
-package com.example.buyukdemircioglug.landslidealert;
+package com.example.buyukdemircioglug.landslidealert.userinput;
 
 import android.support.v4.app.Fragment;
 
-public class MainActivity extends BaseActivity {
+import com.example.buyukdemircioglug.landslidealert.core.BaseActivity;
+
+public class UserInputActivity extends BaseActivity {
 
     @Override
     protected Fragment getContainedFragment() {
