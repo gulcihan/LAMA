@@ -8,11 +8,15 @@ import android.view.View;
 
 import com.example.buyukdemircioglug.landslidealert.R;
 
+import butterknife.ButterKnife;
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ButterKnife.bind(this);
 
         setContentView(getContentResourceId());
 

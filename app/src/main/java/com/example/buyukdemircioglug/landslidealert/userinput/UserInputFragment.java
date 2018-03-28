@@ -16,40 +16,25 @@
 
 package com.example.buyukdemircioglug.landslidealert.userinput;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.TextView;
 
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
 import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
-/**
- * Main UI for the task detail screen.
- */
 @FragmentWithArgs
 public class UserInputFragment extends BaseFragment {
 
-    private TextView mDetailTitle;
-    private TextView mDetailDescription;
-    private CheckBox mDetailCompleteStatus;
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected int getResourceLayoutId() {
+        return R.layout.fragment_taskdetail;
+    }
 
-        final View root = inflater.inflate(R.layout.fragment_taskdetail, container, false);
+    @Override
+    protected void initUserInterface(LayoutInflater inflater, View rootView) {
 
-        mDetailTitle = (TextView) root.findViewById(R.id.task_detail_title);
-        mDetailDescription = (TextView) root.findViewById(R.id.task_detail_description);
-        mDetailCompleteStatus = (CheckBox) root.findViewById(R.id.task_detail_complete);
-
-        return root;
     }
 
     @Override
