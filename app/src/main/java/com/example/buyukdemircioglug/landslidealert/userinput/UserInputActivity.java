@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseActivity;
 
 public class UserInputActivity extends BaseActivity {
@@ -17,7 +18,7 @@ public class UserInputActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getToolBar().setTitle("Please enter your inputs here");
+        getToolBar().setTitle(getString(R.string.user_input_screen_title));
     }
 
     @Override
