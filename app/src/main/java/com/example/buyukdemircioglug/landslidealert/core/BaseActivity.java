@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -20,7 +21,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
-
             final Fragment fragment = getContainedFragment();
 
             if (fragment != null) {
@@ -56,6 +56,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    public ActionBar getToolBar() {
+        return getSupportActionBar();
+    }
 
     /**
      * Method to get activity's UI content frame layout resource id.
