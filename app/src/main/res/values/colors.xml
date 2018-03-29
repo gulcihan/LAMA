@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="primary_700">#FFA000</color>
+    <color name="primary_500">#FFC107</color>
+    <color name="primary_100">#FFECB3</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -8,4 +11,9 @@
     <color name="navy">#124c6f</color>
     <color name="ocean">#007c97</color>
     <color name="off_white">#f6f6f6</color>
+    <color name="white">#ffffff</color>
+    <color name="light_gray">#cccccc</color>
+
+    <color name="burgundy">#98194b</color>
+    <color name="burgundy_60">#9998194b</color>
 </resources>

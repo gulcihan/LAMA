@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,27 +9,35 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <CheckBox
-        android:id="@+id/task_detail_complete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginRight="@dimen/activity_horizontal_margin" />
-
-    <TextView
-        android:id="@+id/task_detail_title"
-        android:layout_toRightOf="@id/task_detail_complete"
+    <com.example.buyukdemircioglug.landslidealert.view.CustomEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Name" />
+
+    <com.example.buyukdemircioglug.landslidealert.view.CustomEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Surname" />
+
+
+    <com.example.buyukdemircioglug.landslidealert.view.CustomTextView
+        android:id="@+id/task_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tarih - Saat"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-    <TextView
+    <com.example.buyukdemircioglug.landslidealert.view.CustomTextView
         android:id="@+id/task_detail_description"
-        android:layout_toRightOf="@id/task_detail_complete"
-        android:layout_below="@id/task_detail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Medium Text"
+        android:text="Konum"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-</RelativeLayout>
+    <Button
+        style="@style/ButtonTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DEVAM"/>
+
+</LinearLayout>

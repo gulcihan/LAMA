@@ -29,7 +29,7 @@ public class UserInputFragment extends BaseFragment {
 
     @Override
     protected int getResourceLayoutId() {
-        return R.layout.fragment_taskdetail;
+        return R.layout.fragment_user_input;
     }
 
     @Override
