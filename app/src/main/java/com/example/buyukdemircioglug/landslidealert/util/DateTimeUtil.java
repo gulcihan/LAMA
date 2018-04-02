@@ -21,7 +21,7 @@ public final class DateTimeUtil {
     public static final String DATE_PATTERN_SHORT_SPACE_M = "dd MMM yyyy";
 
     /**
-     * Private constructor for util class.
+     * Default constructor disabled.
      */
     private DateTimeUtil() {
     }

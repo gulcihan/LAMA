@@ -68,7 +68,6 @@ public class UserInputFragment extends BaseFragment {
         String time = formatter2.format(date);
         textViewTime.setText(time);
 
-
     }
 
     @Override
