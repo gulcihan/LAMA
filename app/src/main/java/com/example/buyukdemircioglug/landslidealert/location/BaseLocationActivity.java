@@ -9,7 +9,6 @@ import android.util.Log;
 import com.example.buyukdemircioglug.landslidealert.core.BaseActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.ResolvableApiException;
-import com.google.android.gms.location.LocationRequest;
 
 public abstract class BaseLocationActivity extends BaseActivity implements MyLocationListener {
 
@@ -46,7 +45,6 @@ public abstract class BaseLocationActivity extends BaseActivity implements MyLoc
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (resultCode == RESULT_OK && requestCode == LOCATION_SERVICES_REQUEST_CODE) {
             requestLocation();
 
@@ -56,9 +54,9 @@ public abstract class BaseLocationActivity extends BaseActivity implements MyLoc
     }
 
     @Override
-    public void onShowLocationSettings() {
+    public void onShowLocationSettings(ResolvableApiException resolvable) {
         // Location settings are not satisfied. But could be fixed by showing the user a dialog.
-        showNativeLocationDialog();
+        showNativeLocationDialog(resolvable);
     }
 
     @Override
@@ -79,6 +77,20 @@ public abstract class BaseLocationActivity extends BaseActivity implements MyLoc
         } else {
             onLocationDataNotFound();
         }
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
 
     }
 
@@ -118,9 +130,7 @@ public abstract class BaseLocationActivity extends BaseActivity implements MyLoc
     /**
      * Request location.
      */
-    //@AskPermission(Manifest.permission.ACCESS_FINE_LOCATION)
     private void requestLocation() {
-
         if (locationProvider.getGoogleApiClient().isConnecting()) {
             return;
         }
@@ -130,10 +140,6 @@ public abstract class BaseLocationActivity extends BaseActivity implements MyLoc
             return;
         }
 
-        locationProvider.requestLocationUpdates(
-                LocationRequest
-                        .create()
-                        .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
-                        .setNumUpdates(1));
+        locationProvider.requestLocationUpdates();
     }
 }

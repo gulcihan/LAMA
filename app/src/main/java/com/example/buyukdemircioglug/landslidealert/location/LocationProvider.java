@@ -1,5 +1,6 @@
 package com.example.buyukdemircioglug.landslidealert.location;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.location.Location;
@@ -12,12 +13,16 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
@@ -36,24 +41,34 @@ public class LocationProvider implements GoogleApiClient.ConnectionCallbacks, Go
     private final MyLocationListener locationListener;
     private Location currentLocation;
     private LocationManager locationManager;
+    private FusedLocationProviderClient fusedLocationClient;
 
     public LocationProvider(Context context, MyLocationListener locationListener) {
         this.context = context;
         this.locationListener = locationListener;
         this.locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
+        this.fusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
         this.googleApiClient = (new GoogleApiClient.Builder(context)).addApi(LocationServices.API)
                 .addConnectionCallbacks(this).addOnConnectionFailedListener(this).build();
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        this.currentLocation = LocationServices.FusedLocationApi.getLastLocation(this.googleApiClient);
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        currentLocation = location;
+                        // Got last known location. In some rare situations this can be null.
 
-        if (this.currentLocation != null) {
-            this.locationListener.onLocationChanged(this.currentLocation);
-        } else {
-            this.locationListener.onLocationNotFound();
-        }
+                        if (currentLocation != null) {
+                            locationListener.onLocationChanged(currentLocation);
+                        } else {
+                            locationListener.onLocationNotFound();
+                        }
+                    }
+                });
     }
 
     @Override
@@ -66,14 +81,6 @@ public class LocationProvider implements GoogleApiClient.ConnectionCallbacks, Go
 
     }
 
-    public Location getCurrentLocation() {
-        if (this.googleApiClient.isConnected()) {
-            this.currentLocation = LocationServices.FusedLocationApi.getLastLocation(this.googleApiClient);
-        }
-
-        return this.currentLocation;
-    }
-
     public void connectAndCheckLocationSettings() {
         this.googleApiClient.connect();
         this.checkLocationSettings();
@@ -81,21 +88,35 @@ public class LocationProvider implements GoogleApiClient.ConnectionCallbacks, Go
 
     public void checkLocationSettings() {
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(LocationRequest.create());
-        final Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(context).checkLocationSettings(builder.build());
+        final Task<LocationSettingsResponse> task = LocationServices.getSettingsClient(context).checkLocationSettings(builder.build());
 
-        result.addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
+        task.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
             @Override
-            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-                // All location settings are satisfied. The client can initialize
-                // location requests here.
-                //LocationProvider.this.locationListener.onShowLocationSettings();
-            }
-        });
+            public void onComplete(Task<LocationSettingsResponse> task) {
+                try {
+                    // All location settings are satisfied. The client can initialize location requests here.
+                    LocationSettingsResponse response = task.getResult(ApiException.class);
 
-        result.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                LocationProvider.this.locationListener.onLocationSettingsFailed(exception);
+
+                } catch (ApiException exception) {
+                    switch (exception.getStatusCode()) {
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            // Location settings are not satisfied. But could be fixed by showing the
+                            // user a dialog.
+                            ResolvableApiException resolvable = (ResolvableApiException) exception;
+                            locationListener.onShowLocationSettings(resolvable);
+                            break;
+
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                            // Location settings are not satisfied. However, we have no way to fix the
+                            // settings so we won't show the dialog.
+                            locationListener.onLocationSettingsFailed(exception);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
             }
         });
     }
@@ -137,25 +158,21 @@ public class LocationProvider implements GoogleApiClient.ConnectionCallbacks, Go
         }
     }
 
-    public void requestLocationUpdates(LocationRequest locationRequest) {
-
-        if(this.googleApiClient.isConnected()) {
-
+    @SuppressLint("MissingPermission")
+    public void requestLocationUpdates() {
+        if (this.googleApiClient.isConnected()) {
             locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
                     LOCATION_REFRESH_TIME,
                     LOCATION_REFRESH_DISTANCE,
                     locationListener
             );
-
         } else {
-
-            if(!this.googleApiClient.isConnecting()) {
+            if (!this.googleApiClient.isConnecting()) {
                 this.connectAndCheckLocationSettings();
             }
         }
     }
-
 
     public boolean isProviderEnabled(String provider) {
         return this.locationManager.isProviderEnabled(provider);

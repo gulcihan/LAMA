@@ -2,23 +2,36 @@ package com.example.buyukdemircioglug.landslidealert.userinput;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import com.example.buyukdemircioglug.landslidealert.R;
-import com.example.buyukdemircioglug.landslidealert.core.BaseActivity;
+import com.example.buyukdemircioglug.landslidealert.location.BaseLocationActivity;
 
-public class UserInputActivity extends BaseActivity {
+public class UserInputActivity extends BaseLocationActivity {
 
     public static Intent newIntent(Context context) {
         return new Intent(context, UserInputActivity.class);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getToolBar().setTitle(getString(R.string.user_input_screen_title));
+    }
+
+    @Override
+    protected void onLocationFound(Location location) {
+        Log.e(getClass().getSimpleName(), "lat : " + location.getLatitude());
+        Log.e(getClass().getSimpleName(), "long : " + location.getLongitude());
+    }
+
+    @Override
+    protected void onLocationDataNotFound() {
+
     }
 
     @Override
