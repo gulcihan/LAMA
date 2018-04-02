@@ -62,6 +62,15 @@ public abstract class BaseActivity extends AppCompatActivity implements RuntimeP
         transaction.commit();
     }
 
+    /**
+     * Get current visible fragment.
+     *
+     * @return fragment which is visible currently
+     */
+    protected Fragment getCurrentFragment() {
+        return getSupportFragmentManager().findFragmentById(getBaseFrameLayoutId());
+    }
+
     public ActionBar getToolBar() {
         return getSupportActionBar();
     }

@@ -74,4 +74,8 @@ public class UserInputFragment extends BaseFragment {
     public void setPresenter(BasePresenter presenter) {
 
     }
+
+    public void setLocationText (String locationText) {
+        textViewLocation.setText(getString(R.string.input_location, locationText));
+    }
 }

@@ -5,6 +5,6 @@
     <string name="input_surname_hint">Soyadınız</string>
     <string name="input_date">Tarih</string>
     <string name="input_time">Saat</string>
-    <string name="input_location">Konum</string>
+    <string name="input_location">Konum : %1$s</string>
     <string name="button_text_continue">DEVAM</string>
 </resources>

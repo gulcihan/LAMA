@@ -5,6 +5,6 @@
     <string name="input_surname_hint">Surname</string>
     <string name="input_date">Date</string>
     <string name="input_time">Time</string>
-    <string name="input_location">Location</string>
+    <string name="input_location">Location : %1$s</string>
     <string name="button_text_continue">CONTINUE</string>
 </resources>

@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.location.BaseLocationActivity;
+import com.example.buyukdemircioglug.landslidealert.util.GeocodeUtil;
 
 public class UserInputActivity extends BaseLocationActivity {
 
@@ -27,6 +28,8 @@ public class UserInputActivity extends BaseLocationActivity {
     protected void onLocationFound(Location location) {
         Log.e(getClass().getSimpleName(), "lat : " + location.getLatitude());
         Log.e(getClass().getSimpleName(), "long : " + location.getLongitude());
+
+        ((UserInputFragment) getCurrentFragment()).setLocationText(GeocodeUtil.createAddressText(this, location));
     }
 
     @Override

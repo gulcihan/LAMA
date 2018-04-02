@@ -13,8 +13,8 @@ import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.List;
@@ -27,12 +27,30 @@ public final class GeocodeUtil {
     private GeocodeUtil() {
     }
 
+    public static String createAddressText(Context context, Location location) {
+        final Address address = geocodeLocation(context, location);
+
+        if (address == null) {
+            return "";
+        } else {
+            return createAddressText(address);
+        }
+    }
+
+    private static String createAddressText(@NonNull Address address) {
+        return String.format("%s / %s / %s / %s",
+                address.getSubLocality(),
+                address.getSubAdminArea(),
+                address.getAdminArea(),
+                address.getCountryName()
+        );
+    }
+
     @Nullable
-    public static Address geocodeLocation(Context context, Location location) {
+    private static Address geocodeLocation(Context context, Location location) {
 
         if (context == null || location == null || !Geocoder.isPresent()
                 || !NetworkUtil.isConnectedOrConnecting(context)) {
-
             return null;
         }
 
@@ -49,22 +67,5 @@ public final class GeocodeUtil {
         }
 
         return address;
-    }
-
-    public static String createAddressText(Address address) {
-        final String[] acceptableAddressTexts = {
-                address.getLocality(),
-                address.getAdminArea(),
-                address.getSubLocality(),
-                address.getSubAdminArea(),
-                address.getCountryName()
-        };
-
-        for (String addressText : acceptableAddressTexts) {
-            if (!TextUtils.isEmpty(addressText)) {
-                return addressText;
-            }
-        }
-        return "";
     }
 }
