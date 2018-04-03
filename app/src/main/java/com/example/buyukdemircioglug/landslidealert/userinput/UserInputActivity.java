@@ -13,6 +13,8 @@ import com.example.buyukdemircioglug.landslidealert.util.GeocodeUtil;
 
 public class UserInputActivity extends BaseLocationActivity {
 
+    private UserInputFragment containedFragment;
+
     public static Intent newIntent(Context context) {
         return new Intent(context, UserInputActivity.class);
     }
@@ -43,7 +45,13 @@ public class UserInputActivity extends BaseLocationActivity {
 
     @Override
     protected Fragment getContainedFragment() {
-        return new UserInputFragmentBuilder().build();
+        containedFragment = new UserInputFragmentBuilder().build();
+        return containedFragment;
+    }
+
+    @Override
+    protected void createPresenter() {
+        new UserInputPresenter(containedFragment);
     }
 
     @Override

@@ -1,11 +1,11 @@
 package com.example.buyukdemircioglug.landslidealert.userinput;
 
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
-import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
 import com.example.buyukdemircioglug.landslidealert.view.CustomButton;
 import com.example.buyukdemircioglug.landslidealert.view.CustomTextView;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 @FragmentWithArgs
-public class UserInputFragment extends BaseFragment {
+public class UserInputFragment extends BaseFragment implements UserInputContract.View {
 
     @BindView(R.id.fragment_user_input_text_view_date)
     CustomTextView textViewDate;
@@ -34,9 +34,17 @@ public class UserInputFragment extends BaseFragment {
     @BindView(R.id.fragment_user_input_button_continue)
     CustomButton buttonContinue;
 
+    private UserInputContract.Presenter presenter;
+
     @Override
     protected int getResourceLayoutId() {
         return R.layout.fragment_user_input;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.start();
     }
 
     @Override
@@ -60,8 +68,8 @@ public class UserInputFragment extends BaseFragment {
     }
 
     @Override
-    public void setPresenter(BasePresenter presenter) {
-
+    public void setPresenter(@NonNull UserInputContract.Presenter presenter) {
+        this.presenter = presenter;
     }
 
     public void setLocationText (String locationText) {
@@ -70,6 +78,11 @@ public class UserInputFragment extends BaseFragment {
 
     @OnClick(R.id.fragment_user_input_button_continue)
     public void onButtonContinueClicked() {
+
+    }
+
+    @Override
+    public void setLoadingIndicator(boolean active) {
 
     }
 }

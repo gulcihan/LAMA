@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
-import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 import butterknife.BindView;
@@ -39,11 +38,6 @@ public class ImageFragment extends BaseFragment {
 
     @Override
     protected void initUserInterface(LayoutInflater inflater, View rootView) {
-
-    }
-
-    @Override
-    public void setPresenter(BasePresenter presenter) {
 
     }
 

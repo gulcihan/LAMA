@@ -34,6 +34,8 @@ public abstract class BaseActivity extends AppCompatActivity implements RuntimeP
             }
         }
 
+        createPresenter();
+
         ButterKnife.bind(this);
 
         setContentView(getContentResourceId());
@@ -123,5 +125,12 @@ public abstract class BaseActivity extends AppCompatActivity implements RuntimeP
      * @return Fragment.
      */
     protected abstract Fragment getContainedFragment();
+
+    /**
+     * Get related presenter instance of the added fragment.
+     *
+     * @return Fragment.
+     */
+    protected abstract void createPresenter();
 
 }

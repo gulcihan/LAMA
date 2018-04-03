@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 /**
  * Extend all your fragments from this base fragment.
  */
-public abstract class BaseFragment extends Fragment implements BaseView<BasePresenter> {
+public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
