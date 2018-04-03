@@ -29,7 +29,11 @@ public class UserInputActivity extends BaseLocationActivity {
         Log.e(getClass().getSimpleName(), "lat : " + location.getLatitude());
         Log.e(getClass().getSimpleName(), "long : " + location.getLongitude());
 
-        ((UserInputFragment) getCurrentFragment()).setLocationText(GeocodeUtil.createAddressText(this, location));
+        final UserInputFragment currentFragment = ((UserInputFragment) getCurrentFragment());
+
+        if (currentFragment!= null && currentFragment.isVisible()) {
+            currentFragment.setLocationText(GeocodeUtil.createAddressText(this, location));
+        }
     }
 
     @Override

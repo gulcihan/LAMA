@@ -43,7 +43,8 @@
         android:text="@string/input_location"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <Button
+    <com.example.buyukdemircioglug.landslidealert.view.CustomButton
+        android:id="@+id/fragment_user_input_button_continue"
         style="@style/ButtonTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

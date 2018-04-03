@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2015 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.buyukdemircioglug.landslidealert.userinput;
 
 import android.view.LayoutInflater;
@@ -22,6 +6,7 @@ import android.view.View;
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
 import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
+import com.example.buyukdemircioglug.landslidealert.view.CustomButton;
 import com.example.buyukdemircioglug.landslidealert.view.CustomTextView;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
@@ -32,6 +17,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 @FragmentWithArgs
 public class UserInputFragment extends BaseFragment {
@@ -44,6 +30,9 @@ public class UserInputFragment extends BaseFragment {
 
     @BindView(R.id.fragment_user_input_text_view_location)
     CustomTextView textViewLocation;
+
+    @BindView(R.id.fragment_user_input_button_continue)
+    CustomButton buttonContinue;
 
     @Override
     protected int getResourceLayoutId() {
@@ -77,5 +66,10 @@ public class UserInputFragment extends BaseFragment {
 
     public void setLocationText (String locationText) {
         textViewLocation.setText(getString(R.string.input_location, locationText));
+    }
+
+    @OnClick(R.id.fragment_user_input_button_continue)
+    public void onButtonContinueClicked() {
+
     }
 }
