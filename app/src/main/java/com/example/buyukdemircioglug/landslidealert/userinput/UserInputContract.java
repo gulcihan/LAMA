@@ -26,13 +26,15 @@ public interface UserInputContract {
 
     interface View extends BaseView<Presenter> {
 
-        void setLoadingIndicator(boolean active);
+        void setDateInfo(String date);
+
+        void setTimeInfo(String time);
+
+        void setLocationInfo(String location);
 
     }
 
     interface Presenter extends BasePresenter {
-
-        void editTask();
 
     }
 }

@@ -18,7 +18,8 @@ import java.util.Date;
 public final class DateTimeUtil {
 
     public static final String DATE_FORMAT_ISO_8601 = "yyyy-MM-dd";
-    public static final String DATE_PATTERN_SHORT_SPACE_M = "dd MMM yyyy";
+    public static final String DEFAULT_DATE_PATTERN = "dd/MM/yyyy";
+    public static final String DEFAULT_TIME_PATTERN = "HH:mm";
 
     /**
      * Default constructor disabled.

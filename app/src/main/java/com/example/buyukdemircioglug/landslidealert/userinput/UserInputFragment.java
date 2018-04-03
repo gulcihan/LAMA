@@ -10,12 +10,6 @@ import com.example.buyukdemircioglug.landslidealert.view.CustomButton;
 import com.example.buyukdemircioglug.landslidealert.view.CustomTextView;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -50,21 +44,6 @@ public class UserInputFragment extends BaseFragment implements UserInputContract
     @Override
     protected void initUserInterface(LayoutInflater inflater, View rootView) {
 
-        final Date date = Calendar.getInstance().getTime();
-
-        final Locale locale = getResources().getConfiguration().locale;
-
-        //
-        // Display a date in day, month, year format
-        //
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", locale);
-        String today = formatter.format(date);
-        textViewDate.setText(today);
-
-        DateFormat formatter2 = new SimpleDateFormat("HH:mm", locale);
-        String time = formatter2.format(date);
-        textViewTime.setText(time);
-
     }
 
     @Override
@@ -82,7 +61,17 @@ public class UserInputFragment extends BaseFragment implements UserInputContract
     }
 
     @Override
-    public void setLoadingIndicator(boolean active) {
+    public void setDateInfo(String date) {
+        textViewDate.setText(date);
+    }
+
+    @Override
+    public void setTimeInfo(String time) {
+        textViewTime.setText(time);
+    }
+
+    @Override
+    public void setLocationInfo(String locationInfo) {
 
     }
 }
