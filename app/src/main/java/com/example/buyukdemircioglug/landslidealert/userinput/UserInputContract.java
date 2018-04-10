@@ -36,5 +36,7 @@ public interface UserInputContract {
 
     interface Presenter extends BasePresenter {
 
+        void onContinueButtonClicked();
+
     }
 }

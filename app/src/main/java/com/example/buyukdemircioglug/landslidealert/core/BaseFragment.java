@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.buyukdemircioglug.landslidealert.core.navigation.ActivityNavigationBundle;
+import com.example.buyukdemircioglug.landslidealert.core.navigation.FragmentNavigationBundle;
+import com.example.buyukdemircioglug.landslidealert.core.navigation.NavigationBundle;
 import com.hannesdorfmann.fragmentargs.FragmentArgs;
 
 import butterknife.ButterKnife;
@@ -36,6 +39,26 @@ public abstract class BaseFragment extends Fragment {
         initUserInterface(inflater, rootView);
 
         return rootView;
+    }
+
+
+    public void handleNavigation(NavigationBundle navigationBundle) {
+        if (navigationBundle instanceof ActivityNavigationBundle) {
+            if (((ActivityNavigationBundle) navigationBundle).isRestartCurrentActivity()) {
+                ((BaseActivity) getActivity()).restartActivity();
+
+            } else if (((ActivityNavigationBundle) navigationBundle).isFinishCurrentActivity()) {
+                getActivity().finish();
+            }
+
+        } else if(navigationBundle instanceof FragmentNavigationBundle) {
+            ((BaseActivity) getActivity()).handleNavigation(navigationBundle);
+        }
+
+    }
+
+    public String getFragmentTag() {
+        return this.getClass().getSimpleName();
     }
 
     /**

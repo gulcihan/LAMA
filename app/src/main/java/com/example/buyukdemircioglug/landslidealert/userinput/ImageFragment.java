@@ -25,11 +25,9 @@ public class ImageFragment extends BaseFragment {
 
     // Camera activity request codes
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
-    private static final int CAMERA_CAPTURE_VIDEO_REQUEST_CODE = 200;
 
     @BindView(R.id.fragment_image_image_view)
     ImageView imageViewLandslide;
-
 
     @Override
     protected int getResourceLayoutId() {

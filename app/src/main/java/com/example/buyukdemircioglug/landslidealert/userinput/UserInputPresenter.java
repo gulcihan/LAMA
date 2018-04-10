@@ -2,6 +2,7 @@ package com.example.buyukdemircioglug.landslidealert.userinput;
 
 import android.support.annotation.NonNull;
 
+import com.example.buyukdemircioglug.landslidealert.core.navigation.FragmentNavigationBundle;
 import com.example.buyukdemircioglug.landslidealert.util.DateTimeUtil;
 import com.example.buyukdemircioglug.landslidealert.util.ResourceRepository;
 
@@ -56,4 +57,9 @@ public class UserInputPresenter implements UserInputContract.Presenter {
         // TODO location will be handled.
     }
 
+    @Override
+    public void onContinueButtonClicked() {
+        view.handleNavigation(new FragmentNavigationBundle(new ImageFragmentBuilder().build()));
+    }
 }
+

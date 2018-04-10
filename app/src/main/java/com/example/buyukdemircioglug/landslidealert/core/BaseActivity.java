@@ -15,6 +15,9 @@ import com.canelmas.let.Let;
 import com.canelmas.let.RuntimePermissionListener;
 import com.canelmas.let.RuntimePermissionRequest;
 import com.example.buyukdemircioglug.landslidealert.R;
+import com.example.buyukdemircioglug.landslidealert.core.navigation.ActivityNavigationBundle;
+import com.example.buyukdemircioglug.landslidealert.core.navigation.FragmentNavigationBundle;
+import com.example.buyukdemircioglug.landslidealert.core.navigation.NavigationBundle;
 
 import java.util.List;
 
@@ -53,11 +56,10 @@ public abstract class BaseActivity extends AppCompatActivity implements RuntimeP
     /**
      * The {@code fragment} is added to the container view with id {@code frameId}. The operation is
      * performed by the {@code fragmentManager}.
-     *
      */
-    public static void addFragmentToActivity (@NonNull FragmentManager fragmentManager,
-                                              @NonNull Fragment fragment,
-                                              int frameId) {
+    public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
+                                             @NonNull Fragment fragment,
+                                             int frameId) {
 
         final FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(frameId, fragment);
@@ -92,6 +94,20 @@ public abstract class BaseActivity extends AppCompatActivity implements RuntimeP
         // Do nothing
     }
 
+    public void handleNavigation(NavigationBundle navigationBundle) {
+        if (navigationBundle instanceof ActivityNavigationBundle) {
+            if (((ActivityNavigationBundle) navigationBundle).isRestartCurrentActivity()) {
+                restartActivity();
+
+            } else if (((ActivityNavigationBundle) navigationBundle).isFinishCurrentActivity()) {
+                finish();
+            }
+
+        } else if (navigationBundle instanceof FragmentNavigationBundle) {
+            replaceFragment(((FragmentNavigationBundle) navigationBundle).getFragment());
+        }
+    }
+
     /**
      * Method to get activity's UI content frame layout resource id.
      *
@@ -117,6 +133,52 @@ public abstract class BaseActivity extends AppCompatActivity implements RuntimeP
      */
     protected boolean hasToolbar() {
         return false;
+    }
+
+    /**
+     * Convenience method for replacing MTSFragments.
+     *
+     * @param fragment MTSFragment to be added
+     */
+    protected void replaceFragment(BaseFragment fragment) {
+        replaceFragment(fragment, true);
+    }
+
+    /**
+     * Method for replacing fragment with current one in base container.
+     *
+     * @param fragment       Fragment to be added
+     * @param addToBackStack Whether this transaction to be added to back stack or not
+     */
+    protected void replaceFragment(BaseFragment fragment, boolean addToBackStack) {
+        replaceFragment(fragment, fragment.getFragmentTag(), addToBackStack);
+    }
+
+    /**
+     * Method for replacing fragment with the current one in the base container.
+     *
+     * @param fragment       Fragment to be added
+     * @param tag            Tag to be used
+     * @param addToBackStack Whether this transaction to be added to back stack or not
+     */
+    public void replaceFragment(Fragment fragment,
+                                String tag,
+                                boolean addToBackStack) {
+
+        final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(getBaseFrameLayoutId(), fragment, tag);
+
+        if (addToBackStack) {
+            transaction.addToBackStack(tag);
+        }
+
+        transaction.commit();
+
+    }
+
+    public void restartActivity() {
+        finish();
+        startActivity(getIntent());
     }
 
     /**

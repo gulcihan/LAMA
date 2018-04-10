@@ -57,7 +57,7 @@ public class UserInputFragment extends BaseFragment implements UserInputContract
 
     @OnClick(R.id.fragment_user_input_button_continue)
     public void onButtonContinueClicked() {
-
+        presenter.onContinueButtonClicked();
     }
 
     @Override
