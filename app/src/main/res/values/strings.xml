@@ -2,11 +2,16 @@
     <string name="app_name">LAMA</string>
     <string name="app_description">LAMA: A landslide data collection app to increase landslide hazard assessment quality</string>
     <string name="info_form_screen_title">Heyelan Bildirimi</string>
-    <string name="input_name_hint">Adınız</string>
-    <string name="input_surname_hint">Soyadınız</string>
-    <string name="input_date">Tarih</string>
-    <string name="input_time">Saat</string>
-    <string name="input_location">Konum : %1$s</string>
+    <string name="user_name_hint">Kullanıcı adı</string>
+    <string name="name_hint">Ad</string>
+    <string name="surname_hint">Soyad</string>
+    <string name="event_location_hint">Olay yeri</string>
+    <string name="event_time_hint">Olay zamanı</string>
+    <string name="damage_description_hint">Hasar durumu (bina, yol, tarım arazisi vb.)</string>
+    <string name="other_observations_hint">Ek gözlemler (oluş şekli, hızı, hareket eden kaya ve toprak bilgisi vb.)</string>
+    <string name="date">Tarih</string>
+    <string name="time">Saat</string>
+    <string name="location">Konum : %1$s</string>
     <string name="button_text_continue">DEVAM</string>
     <string name="image_explanation">Lütfen yeni fotoğraf yüklemek için asağıdaki resime tıklayınız.</string>
 </resources>

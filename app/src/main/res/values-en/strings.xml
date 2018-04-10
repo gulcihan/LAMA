@@ -2,11 +2,16 @@
     <string name="app_name">LAMA</string>
     <string name="app_description">LAMA: A landslide data collection app to increase landslide hazard assessment quality</string>
     <string name="info_form_screen_title">Landslide Information</string>
-    <string name="input_name_hint">Name</string>
-    <string name="input_surname_hint">Surname</string>
-    <string name="input_date">Date</string>
-    <string name="input_time">Time</string>
-    <string name="input_location">Location : %1$s</string>
+    <string name="user_name_hint">User name</string>
+    <string name="name_hint">Name</string>
+    <string name="surname_hint">Surname</string>
+    <string name="event_location_hint">Event location</string>
+    <string name="event_time_hint">Event Time</string>
+    <string name="damage_description_hint">Damage description (building, road, agricultural field, forest …)</string>
+    <string name="other_observations_hint">Other observations (occurrence story, velocity, description of displaced rock and soil …)</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="location">Location : %1$s</string>
     <string name="button_text_continue">CONTINUE</string>
     <string name="image_explanation">Please tap to below image to upload a new one.</string>
 </resources>

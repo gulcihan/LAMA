@@ -52,7 +52,7 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
     }
 
     public void setLocationText (String locationText) {
-        textViewLocation.setText(getString(R.string.input_location, locationText));
+        textViewLocation.setText(getString(R.string.location, locationText));
     }
 
     @OnClick(R.id.fragment_user_input_button_continue)
