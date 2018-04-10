@@ -1,4 +1,4 @@
-package com.example.buyukdemircioglug.landslidealert.userinput;
+package com.example.buyukdemircioglug.landslidealert.addphoto;
 
 
 import android.content.Intent;
@@ -21,7 +21,7 @@ import butterknife.OnClick;
 import static android.app.Activity.RESULT_OK;
 
 @FragmentWithArgs
-public class ImageFragment extends BaseFragment {
+public class AddPhotoFragment extends BaseFragment {
 
     // Camera activity request codes
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
@@ -31,7 +31,7 @@ public class ImageFragment extends BaseFragment {
 
     @Override
     protected int getResourceLayoutId() {
-        return R.layout.fragment_image;
+        return R.layout.fragment_add_photo;
     }
 
     @Override

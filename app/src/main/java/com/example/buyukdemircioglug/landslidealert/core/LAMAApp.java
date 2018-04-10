@@ -2,9 +2,9 @@ package com.example.buyukdemircioglug.landslidealert.core;
 
 import android.app.Application;
 
-public class MyApplication extends Application {
+public class LAMAApp extends Application {
 
-    private static MyApplication instance;
+    private static LAMAApp instance;
 
     @Override
     public void onCreate() {
@@ -17,7 +17,7 @@ public class MyApplication extends Application {
      *
      * @return the application that is running
      */
-    public static MyApplication getInstance() {
+    public static LAMAApp getInstance() {
         return instance;
     }
 }

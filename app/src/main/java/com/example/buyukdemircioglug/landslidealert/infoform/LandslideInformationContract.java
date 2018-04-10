@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.buyukdemircioglug.landslidealert.userinput;
+package com.example.buyukdemircioglug.landslidealert.infoform;
 
 import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
 import com.example.buyukdemircioglug.landslidealert.core.BaseView;
@@ -22,7 +22,7 @@ import com.example.buyukdemircioglug.landslidealert.core.BaseView;
 /**
  * This specifies the contract between the view and the presenter.
  */
-public interface UserInputContract {
+public interface LandslideInformationContract {
 
     interface View extends BaseView<Presenter> {
 

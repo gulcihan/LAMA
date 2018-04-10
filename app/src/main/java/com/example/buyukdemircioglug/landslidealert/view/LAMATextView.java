@@ -14,17 +14,17 @@ import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 
-public class CustomTextView extends AppCompatTextView {
+public class LAMATextView extends AppCompatTextView {
 
-    public CustomTextView(Context context) {
+    public LAMATextView(Context context) {
         super(context);
     }
 
-    public CustomTextView(Context context, AttributeSet attrs) {
+    public LAMATextView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CustomTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LAMATextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 }

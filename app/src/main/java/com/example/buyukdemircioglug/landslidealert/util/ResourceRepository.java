@@ -7,7 +7,7 @@ import android.support.annotation.IntegerRes;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 
-import com.example.buyukdemircioglug.landslidealert.core.MyApplication;
+import com.example.buyukdemircioglug.landslidealert.core.LAMAApp;
 
 import java.util.Locale;
 
@@ -24,7 +24,7 @@ public class ResourceRepository {
 
     public static ResourceRepository getInstance() {
         if (resourceRepository == null) {
-            resourceRepository = new ResourceRepository(MyApplication.getInstance().getApplicationContext());
+            resourceRepository = new ResourceRepository(LAMAApp.getInstance().getApplicationContext());
         }
         return resourceRepository;
     }

@@ -1,7 +1,8 @@
-package com.example.buyukdemircioglug.landslidealert.userinput;
+package com.example.buyukdemircioglug.landslidealert.infoform;
 
 import android.support.annotation.NonNull;
 
+import com.example.buyukdemircioglug.landslidealert.addphoto.AddPhotoFragmentBuilder;
 import com.example.buyukdemircioglug.landslidealert.core.navigation.FragmentNavigationBundle;
 import com.example.buyukdemircioglug.landslidealert.util.DateTimeUtil;
 import com.example.buyukdemircioglug.landslidealert.util.ResourceRepository;
@@ -12,11 +13,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class UserInputPresenter implements UserInputContract.Presenter {
+public class LandslideInformationPresenter implements LandslideInformationContract.Presenter {
 
-    private final UserInputContract.View view;
+    private final LandslideInformationContract.View view;
 
-    public UserInputPresenter(@NonNull UserInputContract.View view) {
+    public LandslideInformationPresenter(@NonNull LandslideInformationContract.View view) {
         this.view = view;
         this.view.setPresenter(this);
     }
@@ -59,7 +60,7 @@ public class UserInputPresenter implements UserInputContract.Presenter {
 
     @Override
     public void onContinueButtonClicked() {
-        view.handleNavigation(new FragmentNavigationBundle(new ImageFragmentBuilder().build()));
+        view.handleNavigation(new FragmentNavigationBundle(new AddPhotoFragmentBuilder().build()));
     }
 }
 

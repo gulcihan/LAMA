@@ -1,16 +1,26 @@
-<!--
-  ~ Copyright 2003-2015 Monitise Group Limited. All Rights Reserved.
-  ~
-  ~ Save to the extent permitted by law, you may not use, copy, modify,
-  ~ distribute or create derivative works of this material or any part
-  ~ of it without the prior written consent of Monitise Group Limited.
-  ~ Any reproduction of this material must contain this notice.
-  -->
-
-<ImageView
-    android:id="@+id/activity_splash_screen_image_view"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scaleType="centerInside"
-    android:src="@drawable/splash_image"/>
+    android:orientation="vertical"
+    android:padding="@dimen/default_padding">
+
+    <com.example.buyukdemircioglug.landslidealert.view.LAMATextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:text="@string/app_description" />
+
+    <ImageView
+        android:id="@+id/activity_splash_screen_image_view"
+        style="@style/LAMATextViewTheme"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:src="@drawable/splash_image" />
+
+</LinearLayout>
+
+

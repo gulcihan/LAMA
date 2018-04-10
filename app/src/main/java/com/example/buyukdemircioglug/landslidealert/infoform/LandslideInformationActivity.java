@@ -1,4 +1,4 @@
-package com.example.buyukdemircioglug.landslidealert.userinput;
+package com.example.buyukdemircioglug.landslidealert.infoform;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,19 +11,19 @@ import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.location.BaseLocationActivity;
 import com.example.buyukdemircioglug.landslidealert.util.GeocodeUtil;
 
-public class UserInputActivity extends BaseLocationActivity {
+public class LandslideInformationActivity extends BaseLocationActivity {
 
-    private UserInputFragment containedFragment;
+    private LandslideInformationFragment containedFragment;
 
     public static Intent newIntent(Context context) {
-        return new Intent(context, UserInputActivity.class);
+        return new Intent(context, LandslideInformationActivity.class);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getToolBar().setTitle(getString(R.string.user_input_screen_title));
+        getToolBar().setTitle(getString(R.string.info_form_screen_title));
     }
 
     @Override
@@ -31,7 +31,7 @@ public class UserInputActivity extends BaseLocationActivity {
         Log.e(getClass().getSimpleName(), "lat : " + location.getLatitude());
         Log.e(getClass().getSimpleName(), "long : " + location.getLongitude());
 
-        final UserInputFragment currentFragment = ((UserInputFragment) getCurrentFragment());
+        final LandslideInformationFragment currentFragment = ((LandslideInformationFragment) getCurrentFragment());
 
         if (currentFragment!= null && currentFragment.isVisible()) {
             currentFragment.setLocationText(GeocodeUtil.createAddressText(this, location));
@@ -45,13 +45,13 @@ public class UserInputActivity extends BaseLocationActivity {
 
     @Override
     protected Fragment getContainedFragment() {
-        containedFragment = new UserInputFragmentBuilder().build();
+        containedFragment = new LandslideInformationFragmentBuilder().build();
         return containedFragment;
     }
 
     @Override
     protected void createPresenter() {
-        new UserInputPresenter(containedFragment);
+        new LandslideInformationPresenter(containedFragment);
     }
 
     @Override

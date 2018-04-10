@@ -1,4 +1,4 @@
-package com.example.buyukdemircioglug.landslidealert.userinput;
+package com.example.buyukdemircioglug.landslidealert.infoform;
 
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -6,33 +6,33 @@ import android.view.View;
 
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
-import com.example.buyukdemircioglug.landslidealert.view.CustomButton;
-import com.example.buyukdemircioglug.landslidealert.view.CustomTextView;
+import com.example.buyukdemircioglug.landslidealert.view.LAMAButton;
+import com.example.buyukdemircioglug.landslidealert.view.LAMATextView;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 @FragmentWithArgs
-public class UserInputFragment extends BaseFragment implements UserInputContract.View {
+public class LandslideInformationFragment extends BaseFragment implements LandslideInformationContract.View {
 
     @BindView(R.id.fragment_user_input_text_view_date)
-    CustomTextView textViewDate;
+    LAMATextView textViewDate;
 
     @BindView(R.id.fragment_user_input_text_view_time)
-    CustomTextView textViewTime;
+    LAMATextView textViewTime;
 
     @BindView(R.id.fragment_user_input_text_view_location)
-    CustomTextView textViewLocation;
+    LAMATextView textViewLocation;
 
     @BindView(R.id.fragment_user_input_button_continue)
-    CustomButton buttonContinue;
+    LAMAButton buttonContinue;
 
-    private UserInputContract.Presenter presenter;
+    private LandslideInformationContract.Presenter presenter;
 
     @Override
     protected int getResourceLayoutId() {
-        return R.layout.fragment_user_input;
+        return R.layout.fragment_landslide_information;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class UserInputFragment extends BaseFragment implements UserInputContract
     }
 
     @Override
-    public void setPresenter(@NonNull UserInputContract.Presenter presenter) {
+    public void setPresenter(@NonNull LandslideInformationContract.Presenter presenter) {
         this.presenter = presenter;
     }
 

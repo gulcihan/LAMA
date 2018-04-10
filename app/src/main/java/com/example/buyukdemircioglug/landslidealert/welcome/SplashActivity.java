@@ -17,7 +17,7 @@ import android.support.v4.app.Fragment;
 import com.canelmas.let.AskPermission;
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseActivity;
-import com.example.buyukdemircioglug.landslidealert.userinput.UserInputActivity;
+import com.example.buyukdemircioglug.landslidealert.infoform.LandslideInformationActivity;
 
 public class SplashActivity extends BaseActivity {
 
@@ -56,7 +56,7 @@ public class SplashActivity extends BaseActivity {
 
     @AskPermission(Manifest.permission.ACCESS_FINE_LOCATION)
     private void navigateToUserInputScreen() {
-        SplashActivity.this.startActivity(UserInputActivity.newIntent(SplashActivity.this));
+        SplashActivity.this.startActivity(LandslideInformationActivity.newIntent(SplashActivity.this));
         SplashActivity.this.finish();
     }
 

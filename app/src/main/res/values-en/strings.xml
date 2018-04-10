@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Landslide Alert</string>
-    <string name="user_input_screen_title">Personal Information</string>
+    <string name="app_name">LAMA</string>
+    <string name="app_description">LAMA: A landslide data collection app to increase landslide hazard assessment quality</string>
+    <string name="info_form_screen_title">Landslide Information</string>
     <string name="input_name_hint">Name</string>
     <string name="input_surname_hint">Surname</string>
     <string name="input_date">Date</string>

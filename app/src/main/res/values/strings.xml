@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Heyelan Var</string>
-    <string name="user_input_screen_title">Kişisel Bilgiler</string>
+    <string name="app_name">LAMA</string>
+    <string name="app_description">LAMA: A landslide data collection app to increase landslide hazard assessment quality</string>
+    <string name="info_form_screen_title">Heyelan Bildirimi</string>
     <string name="input_name_hint">Adınız</string>
     <string name="input_surname_hint">Soyadınız</string>
     <string name="input_date">Tarih</string>

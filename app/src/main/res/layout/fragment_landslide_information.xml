@@ -9,43 +9,43 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <com.example.buyukdemircioglug.landslidealert.view.CustomEditText
+    <com.example.buyukdemircioglug.landslidealert.view.LAMAEditText
         android:id="@+id/fragment_user_input_edit_text_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/input_name_hint" />
 
-    <com.example.buyukdemircioglug.landslidealert.view.CustomEditText
+    <com.example.buyukdemircioglug.landslidealert.view.LAMAEditText
         android:id="@+id/fragment_user_input_edit_text_surname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/input_surname_hint" />
 
 
-    <com.example.buyukdemircioglug.landslidealert.view.CustomTextView
+    <com.example.buyukdemircioglug.landslidealert.view.LAMATextView
         android:id="@+id/fragment_user_input_text_view_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/input_date"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-    <com.example.buyukdemircioglug.landslidealert.view.CustomTextView
+    <com.example.buyukdemircioglug.landslidealert.view.LAMATextView
         android:id="@+id/fragment_user_input_text_view_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/input_time"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-    <com.example.buyukdemircioglug.landslidealert.view.CustomTextView
+    <com.example.buyukdemircioglug.landslidealert.view.LAMATextView
         android:id="@+id/fragment_user_input_text_view_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/input_location"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <com.example.buyukdemircioglug.landslidealert.view.CustomButton
+    <com.example.buyukdemircioglug.landslidealert.view.LAMAButton
         android:id="@+id/fragment_user_input_button_continue"
-        style="@style/ButtonTheme"
+        style="@style/LAMAButtonTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_text_continue" />
