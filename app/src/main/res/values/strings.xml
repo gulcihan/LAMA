@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LAMA</string>
     <string name="app_description">LAMA: A landslide data collection app to increase landslide hazard assessment quality</string>
-    <string name="info_form_screen_title">Heyelan Bildirimi</string>
+    <string name="info_form_screen_title">HEYELAN BİLDİRİMİ</string>
     <string name="user_name_hint">Kullanıcı adı</string>
     <string name="name_hint">Ad</string>
     <string name="surname_hint">Soyad</string>

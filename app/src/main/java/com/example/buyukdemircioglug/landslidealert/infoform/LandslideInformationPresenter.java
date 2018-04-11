@@ -17,7 +17,7 @@ public class LandslideInformationPresenter implements LandslideInformationContra
 
     private final LandslideInformationContract.View view;
 
-    public LandslideInformationPresenter(@NonNull LandslideInformationContract.View view) {
+    LandslideInformationPresenter(@NonNull LandslideInformationContract.View view) {
         this.view = view;
         this.view.setPresenter(this);
     }

@@ -7,6 +7,7 @@ import android.view.View;
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
 import com.example.buyukdemircioglug.landslidealert.view.LAMAButton;
+import com.example.buyukdemircioglug.landslidealert.view.LAMAInlineErrorEditText;
 import com.example.buyukdemircioglug.landslidealert.view.LAMATextView;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
@@ -15,6 +16,27 @@ import butterknife.OnClick;
 
 @FragmentWithArgs
 public class LandslideInformationFragment extends BaseFragment implements LandslideInformationContract.View {
+
+    @BindView(R.id.fragment_landslide_information_edit_text_username)
+    LAMAInlineErrorEditText editTextUsername;
+
+    @BindView(R.id.fragment_landslide_information_edit_text_name)
+    LAMAInlineErrorEditText editTextName;
+
+    @BindView(R.id.fragment_landslide_information_edit_text_surname)
+    LAMAInlineErrorEditText editTextSurname;
+
+    @BindView(R.id.fragment_landslide_information_edit_text_event_location)
+    LAMAInlineErrorEditText editTextEventLocation;
+
+    @BindView(R.id.fragment_landslide_information_edit_text_event_time)
+    LAMAInlineErrorEditText editTextEventTime;
+
+    @BindView(R.id.fragment_landslide_information_edit_text_damage_description)
+    LAMAInlineErrorEditText editTextDamageDescription;
+
+    @BindView(R.id.fragment_landslide_information_edit_text_other_observations)
+    LAMAInlineErrorEditText editTextOtherObservations;
 
     @BindView(R.id.fragment_user_input_text_view_date)
     LAMATextView textViewDate;

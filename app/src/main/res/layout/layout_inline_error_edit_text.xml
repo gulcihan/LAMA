@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2003-2018 Monitise Group Limited. All Rights Reserved.
+  ~
+  ~ Save to the extent permitted by law, you may not use, copy, modify,
+  ~ distribute or create derivative works of this material or any part
+  ~ of it without the prior written consent of Monitise Group Limited.
+  ~ Any reproduction of this material must contain this notice.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.example.buyukdemircioglug.landslidealert.view.LAMAEditText
+        android:id="@+id/layout_inline_error_edit_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:saveEnabled="false" />
+
+    <com.example.buyukdemircioglug.landslidealert.view.LAMATextView
+        android:id="@+id/layout_inline_error_text_view_error_message"
+        style="@style/LAMATextViewTheme.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/lama_spacing_small"
+        android:saveEnabled="false"
+        android:textColor="@color/lama_red"
+        android:visibility="gone"
+        tools:text="Please enter a valid input." />
+
+</LinearLayout>

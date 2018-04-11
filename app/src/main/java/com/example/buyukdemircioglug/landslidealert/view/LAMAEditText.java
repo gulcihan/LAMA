@@ -11,7 +11,10 @@ package com.example.buyukdemircioglug.landslidealert.view;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.InputFilter;
 import android.util.AttributeSet;
+
+import com.example.buyukdemircioglug.landslidealert.util.InputFilterUtil;
 
 
 public class LAMAEditText extends AppCompatEditText {
@@ -26,5 +29,16 @@ public class LAMAEditText extends AppCompatEditText {
 
     public LAMAEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    /**
+     * Add given input filters.
+     * This method is not responsible to prevent filter and inputType clashes.
+     * It merges given filters with the ones that already exist.
+     *
+     * @param filters input filters
+     */
+    public void addInputFilters(InputFilter... filters) {
+        InputFilterUtil.addInputFilter(this, filters);
     }
 }
