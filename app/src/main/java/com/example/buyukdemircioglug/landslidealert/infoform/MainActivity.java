@@ -13,7 +13,7 @@ import com.example.buyukdemircioglug.landslidealert.addphoto.AddPhotoFragment;
 import com.example.buyukdemircioglug.landslidealert.location.BaseLocationActivity;
 import com.example.buyukdemircioglug.landslidealert.util.GeocodeUtil;
 
-public class LandslideInformationActivity extends BaseLocationActivity {
+public class MainActivity extends BaseLocationActivity {
 
     // Camera activity request codes
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
@@ -21,7 +21,7 @@ public class LandslideInformationActivity extends BaseLocationActivity {
     private LandslideInformationFragment containedFragment;
 
     public static Intent newIntent(Context context) {
-        return new Intent(context, LandslideInformationActivity.class);
+        return new Intent(context, MainActivity.class);
     }
 
     @Override

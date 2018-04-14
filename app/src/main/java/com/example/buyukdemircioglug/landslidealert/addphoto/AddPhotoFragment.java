@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
-import com.example.buyukdemircioglug.landslidealert.infoform.LandslideInformationActivity;
+import com.example.buyukdemircioglug.landslidealert.infoform.MainActivity;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 import butterknife.BindView;
@@ -56,7 +56,7 @@ public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.V
      */
     @Override
     public void captureImage() {
-        ((LandslideInformationActivity) getActivity()).captureImage();
+        ((MainActivity) getActivity()).captureImage();
     }
 
     public void setImage(Bitmap imageBitmap) {

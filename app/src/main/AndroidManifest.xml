@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".infoform.LandslideInformationActivity"
+            android:name=".infoform.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
 
