@@ -16,6 +16,8 @@
 
 package com.example.buyukdemircioglug.landslidealert.infoform;
 
+import android.support.annotation.NonNull;
+
 import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
 import com.example.buyukdemircioglug.landslidealert.core.BaseView;
 
@@ -32,11 +34,23 @@ public interface LandslideInformationContract {
 
         void setLocationInfo(String location);
 
+        void showErrorForUserName();
+
+        void setUserNameAsValid();
+
+        void showErrorForName();
+
+        void setNameAsValid();
+
+        void showErrorForSurname();
+
+        void setSurnameAsValid();
+
     }
 
     interface Presenter extends BasePresenter {
 
-        void onContinueButtonClicked();
+        void onContinueButtonClicked(@NonNull LandslideInfo info);
 
     }
 }

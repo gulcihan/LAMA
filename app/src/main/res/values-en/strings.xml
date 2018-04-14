@@ -9,6 +9,7 @@
     <string name="event_time_hint">Event Time</string>
     <string name="damage_description_hint">Damage description (building, road, agricultural field, forest …)</string>
     <string name="other_observations_hint">Other observations (occurrence story, velocity, description of displaced rock and soil …)</string>
+    <string name="input_not_valid_error_text">*Please provide a valid input for this field.</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="location">Location : %1$s</string>

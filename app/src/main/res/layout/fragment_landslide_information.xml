@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/user_name_hint"
             android:inputType="text"
-            android:maxLength="3"
+            android:maxLength="@integer/default_input_length"
             android:textAppearance="@style/LAMATextViewTheme" />
 
         <!--Name & Surname-->
@@ -33,6 +33,7 @@
                 android:layout_weight="1"
                 android:hint="@string/name_hint"
                 android:inputType="text"
+                android:maxLength="@integer/default_input_length"
                 android:textAppearance="@style/LAMATextViewTheme" />
 
             <com.example.buyukdemircioglug.landslidealert.view.LAMAInlineErrorEditText
@@ -42,6 +43,7 @@
                 android:layout_weight="1"
                 android:hint="@string/surname_hint"
                 android:inputType="text"
+                android:maxLength="@integer/default_input_length"
                 android:textAppearance="@style/LAMATextViewTheme" />
 
         </LinearLayout>
@@ -52,8 +54,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/event_location_hint"
-            android:maxLength="3"
             android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLength="@integer/default_input_length"
             android:textAppearance="@style/LAMATextViewTheme" />
 
         <!--Event Time-->
@@ -62,8 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/event_time_hint"
-            android:maxLength="3"
             android:imeOptions="actionDone"
+            android:inputType="datetime"
             android:textAppearance="@style/LAMATextViewTheme" />
 
         <!--Damage Description-->
@@ -73,7 +76,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/damage_description_hint"
             android:inputType="text"
-            android:maxLength="250"
+            android:maxLength="@integer/long_input_length"
             android:textAppearance="@style/LAMATextViewTheme" />
 
         <!--Other Observations-->
@@ -83,7 +86,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/other_observations_hint"
             android:inputType="text"
-            android:maxLength="250"
+            android:maxLength="@integer/long_input_length"
             android:textAppearance="@style/LAMATextViewTheme" />
 
         <!--WILL BE DELETED-->

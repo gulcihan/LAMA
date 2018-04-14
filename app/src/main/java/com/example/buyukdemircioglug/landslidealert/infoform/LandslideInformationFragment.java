@@ -52,6 +52,8 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
 
     private LandslideInformationContract.Presenter presenter;
 
+    private LandslideInfo landslideInfo;
+
     @Override
     protected int getResourceLayoutId() {
         return R.layout.fragment_landslide_information;
@@ -73,13 +75,13 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
         this.presenter = presenter;
     }
 
-    public void setLocationText (String locationText) {
+    public void setLocationText(String locationText) {
         textViewLocation.setText(getString(R.string.location, locationText));
     }
 
     @OnClick(R.id.fragment_user_input_button_continue)
     public void onButtonContinueClicked() {
-        presenter.onContinueButtonClicked();
+        presenter.onContinueButtonClicked(getLandslideInfoPOJO());
     }
 
     @Override
@@ -95,5 +97,58 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
     @Override
     public void setLocationInfo(String locationInfo) {
 
+    }
+
+    @Override
+    public void showErrorForUserName() {
+        showErrorForInputField(editTextUsername);
+    }
+
+    @Override
+    public void setUserNameAsValid() {
+        setInputFieldAsValid(editTextUsername);
+    }
+
+    @Override
+    public void showErrorForName() {
+        showErrorForInputField(editTextName);
+    }
+
+    @Override
+    public void setNameAsValid() {
+        setInputFieldAsValid(editTextName);
+    }
+
+    @Override
+    public void showErrorForSurname() {
+        showErrorForInputField(editTextSurname);
+    }
+
+    @Override
+    public void setSurnameAsValid() {
+        setInputFieldAsValid(editTextSurname);
+    }
+
+    private void showErrorForInputField(LAMAInlineErrorEditText editText) {
+        editText.setErrorState(true);
+        editText.setErrorText(getString(R.string.input_not_valid_error_text));
+    }
+
+    private void setInputFieldAsValid(LAMAInlineErrorEditText editText) {
+        editText.setErrorState(false);
+    }
+
+    private LandslideInfo getLandslideInfoPOJO() {
+        landslideInfo = new LandslideInfo(
+                editTextUsername.getTextAsString(),
+                editTextName.getTextAsString(),
+                editTextSurname.getTextAsString(),
+                editTextEventLocation.getTextAsString(),
+                editTextEventTime.getTextAsString(),
+                editTextDamageDescription.getTextAsString(),
+                editTextOtherObservations.getTextAsString()
+        );
+
+        return landslideInfo;
     }
 }

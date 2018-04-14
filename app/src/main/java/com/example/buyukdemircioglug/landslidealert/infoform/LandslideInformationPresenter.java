@@ -1,6 +1,7 @@
 package com.example.buyukdemircioglug.landslidealert.infoform;
 
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import com.example.buyukdemircioglug.landslidealert.addphoto.AddPhotoFragmentBuilder;
 import com.example.buyukdemircioglug.landslidealert.core.navigation.FragmentNavigationBundle;
@@ -59,8 +60,41 @@ public class LandslideInformationPresenter implements LandslideInformationContra
     }
 
     @Override
-    public void onContinueButtonClicked() {
-        view.handleNavigation(new FragmentNavigationBundle(new AddPhotoFragmentBuilder().build()));
+    public void onContinueButtonClicked(@NonNull LandslideInfo landslideInfo) {
+        if (validateInputs(landslideInfo)) {
+            view.handleNavigation(new FragmentNavigationBundle(new AddPhotoFragmentBuilder().build()));
+        }
     }
+
+    private boolean validateInputs(@NonNull LandslideInfo info) {
+        // Username Validation
+        if (TextUtils.isEmpty(info.getUsername())) {
+            view.showErrorForUserName();
+
+        } else {
+            view.setUserNameAsValid();
+        }
+
+        // Name Validation
+        if (TextUtils.isEmpty(info.getName())) {
+            view.showErrorForUserName();
+
+        } else {
+            view.setUserNameAsValid();
+        }
+
+        // Surname Validation
+        if (TextUtils.isEmpty(info.getSurname())) {
+            view.showErrorForSurname();
+
+        } else {
+            view.setSurnameAsValid();
+        }
+
+        return !TextUtils.isEmpty(info.getUsername())
+                && !TextUtils.isEmpty(info.getName())
+                && !TextUtils.isEmpty(info.getSurname());
+    }
+
 }
 
