@@ -84,10 +84,10 @@ public class LandslideInformationPresenter implements LandslideInformationContra
 
         // Name Validation
         if (TextUtils.isEmpty(info.getName())) {
-            view.showErrorForUserName();
+            view.showErrorForName();
 
         } else {
-            view.setUserNameAsValid();
+            view.setNameAsValid();
         }
 
         // Surname Validation

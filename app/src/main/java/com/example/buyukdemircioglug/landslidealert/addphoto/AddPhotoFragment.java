@@ -87,7 +87,7 @@ public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.V
      */
     @Override
     public void captureImage() {
-        ((MainActivity) getActivity()).captureImage();
+        ((MainActivity) getActivity()).showPictureDialog();
     }
 
     @Override
