@@ -25,5 +25,10 @@ public class AddPhotoPresenter implements AddPhotoContract.Presenter {
     public void onAddPhotoButtonClicked() {
         view.captureImage();
     }
+
+    @Override
+    public void onSendButtonClicked() {
+        view.sendEmail();
+    }
 }
 

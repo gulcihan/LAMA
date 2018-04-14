@@ -15,5 +15,6 @@
     <string name="time">Time</string>
     <string name="location">Location : %1$s</string>
     <string name="button_text_continue">CONTINUE</string>
+    <string name="button_text_send">SEND</string>
     <string name="image_explanation">Please tap to below image to upload a new one.</string>
 </resources>

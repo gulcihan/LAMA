@@ -12,11 +12,15 @@ public interface AddPhotoContract {
 
         void captureImage();
 
+        void sendEmail();
+
     }
 
     interface Presenter extends BasePresenter {
 
         void onAddPhotoButtonClicked();
+
+        void onSendButtonClicked();
 
     }
 }
