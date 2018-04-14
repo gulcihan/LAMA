@@ -1,11 +1,8 @@
 package com.example.buyukdemircioglug.landslidealert.addphoto;
 
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,21 +10,19 @@ import android.widget.Toast;
 
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
+import com.example.buyukdemircioglug.landslidealert.infoform.LandslideInformationActivity;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static android.app.Activity.RESULT_OK;
-
 @FragmentWithArgs
-public class AddPhotoFragment extends BaseFragment {
+public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.View {
 
-    // Camera activity request codes
-    private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
-
-    @BindView(R.id.fragment_image_image_view)
+    @BindView(R.id.fragment_add_photo_image_view_one)
     ImageView imageViewLandslide;
+
+    private AddPhotoContract.Presenter presenter;
 
     @Override
     protected int getResourceLayoutId() {
@@ -37,19 +32,37 @@ public class AddPhotoFragment extends BaseFragment {
     @Override
     protected void initUserInterface(LayoutInflater inflater, View rootView) {
 
+        setToolbarTitle(getString(R.string.add_photo_screen_title));
     }
 
-    @OnClick(R.id.fragment_image_image_view)
-    public void onImageViewLandslideClicked() {
+    @Override
+    public void setPresenter(AddPhotoContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
 
+    @OnClick(R.id.fragment_add_photo_image_view_one)
+    public void onAddPhotoButtonClicked() {
         // Checking camera availability
         if (!isDeviceSupportCamera()) {
             Toast.makeText(getActivity(), "Sorry! Your device doesn't support camera", Toast.LENGTH_LONG).show();
 
         } else {
-            captureImage();
+            presenter.onAddPhotoButtonClicked();
         }
+    }
 
+    /**
+     * Launching camera app to capture image
+     */
+    @Override
+    public void captureImage() {
+        ((LandslideInformationActivity) getActivity()).captureImage();
+    }
+
+    public void setImage(Bitmap imageBitmap) {
+        if (imageBitmap != null) {
+            imageViewLandslide.setImageBitmap(imageBitmap);
+        }
     }
 
     /**
@@ -57,30 +70,6 @@ public class AddPhotoFragment extends BaseFragment {
      */
     private boolean isDeviceSupportCamera() {
         return getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
-    }
-
-    /**
-     * Launching camera app to capture image
-     */
-    private void captureImage() {
-        final Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
-        }
-    }
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-
-            if (extras != null) {
-                Bitmap imageBitmap = (Bitmap) extras.get("data");
-                imageViewLandslide.setImageBitmap(imageBitmap);
-            }
-        }
     }
 
 }

@@ -2,6 +2,7 @@
     <string name="app_name">LAMA</string>
     <string name="app_description">LAMA: A landslide data collection app to increase landslide hazard assessment quality</string>
     <string name="info_form_screen_title">LANDSLIDE INFORMATION</string>
+    <string name="add_photo_screen_title">ADD PHOTOS</string>
     <string name="user_name_hint">User name</string>
     <string name="name_hint">Name</string>
     <string name="surname_hint">Surname</string>

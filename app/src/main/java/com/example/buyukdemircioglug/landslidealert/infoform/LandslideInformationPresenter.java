@@ -3,7 +3,10 @@ package com.example.buyukdemircioglug.landslidealert.infoform;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.example.buyukdemircioglug.landslidealert.addphoto.AddPhotoContract;
 import com.example.buyukdemircioglug.landslidealert.addphoto.AddPhotoFragmentBuilder;
+import com.example.buyukdemircioglug.landslidealert.addphoto.AddPhotoPresenter;
+import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
 import com.example.buyukdemircioglug.landslidealert.core.navigation.FragmentNavigationBundle;
 import com.example.buyukdemircioglug.landslidealert.util.DateTimeUtil;
 import com.example.buyukdemircioglug.landslidealert.util.ResourceRepository;
@@ -18,7 +21,7 @@ public class LandslideInformationPresenter implements LandslideInformationContra
 
     private final LandslideInformationContract.View view;
 
-    LandslideInformationPresenter(@NonNull LandslideInformationContract.View view) {
+    public LandslideInformationPresenter(@NonNull LandslideInformationContract.View view) {
         this.view = view;
         this.view.setPresenter(this);
     }
@@ -62,7 +65,11 @@ public class LandslideInformationPresenter implements LandslideInformationContra
     @Override
     public void onContinueButtonClicked(@NonNull LandslideInfo landslideInfo) {
         if (validateInputs(landslideInfo)) {
-            view.handleNavigation(new FragmentNavigationBundle(new AddPhotoFragmentBuilder().build()));
+            final BaseFragment fragment = new AddPhotoFragmentBuilder().build();
+            view.handleNavigation(new FragmentNavigationBundle(
+                    fragment,
+                    new AddPhotoPresenter((AddPhotoContract.View) fragment)
+            ));
         }
     }
 

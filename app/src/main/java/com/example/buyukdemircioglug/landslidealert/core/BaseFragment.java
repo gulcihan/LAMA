@@ -61,6 +61,10 @@ public abstract class BaseFragment extends Fragment {
         return this.getClass().getSimpleName();
     }
 
+    public void setToolbarTitle(String title) {
+        ((BaseActivity) getActivity()).getToolBar().setTitle(title);
+    }
+
     /**
      * Resource layout id of the fragment.
      * Child fragments must override this to have a layout.
