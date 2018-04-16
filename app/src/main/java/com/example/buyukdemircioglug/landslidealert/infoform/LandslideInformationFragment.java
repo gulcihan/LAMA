@@ -67,7 +67,6 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
 
     @Override
     protected void initUserInterface(LayoutInflater inflater, View rootView) {
-
         setToolbarTitle(getString(R.string.info_form_screen_title));
     }
 

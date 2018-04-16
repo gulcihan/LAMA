@@ -2,10 +2,12 @@ package com.example.buyukdemircioglug.landslidealert.addphoto;
 
 
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,7 +15,6 @@ import android.widget.Toast;
 
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
-import com.example.buyukdemircioglug.landslidealert.infoform.MainActivity;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 import butterknife.BindView;
@@ -44,7 +45,6 @@ public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.V
 
     @Override
     protected void initUserInterface(LayoutInflater inflater, View rootView) {
-
         setToolbarTitle(getString(R.string.add_photo_screen_title));
     }
 
@@ -86,8 +86,26 @@ public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.V
      * Launching camera app to capture image
      */
     @Override
-    public void captureImage() {
-        ((MainActivity) getActivity()).showPictureDialog();
+    public void showAddPhotoDialog() {
+        final AlertDialog.Builder pictureDialog = new AlertDialog.Builder(getActivity());
+        pictureDialog.setTitle("Select Action");
+
+        final String[] pictureDialogItems = {"Select photo from gallery", "Capture photo from camera"};
+        pictureDialog.setItems(pictureDialogItems,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                presenter.choosePhotoFromGallerySelected();
+                                break;
+                            case 1:
+                                presenter.takePhotoWithCameraSelected();
+                                break;
+                        }
+                    }
+                });
+        pictureDialog.show();
     }
 
     @Override

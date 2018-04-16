@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2003-2018 Monitise Group Limited. All Rights Reserved.
+  ~
+  ~ Save to the extent permitted by law, you may not use, copy, modify,
+  ~ distribute or create derivative works of this material or any part
+  ~ of it without the prior written consent of Monitise Group Limited.
+  ~ Any reproduction of this material must contain this notice.
+  -->
+
+<resources>
+    <!-- Should be an 16 bit unsigned int (0-65535) -->
+    <integer name="request_code_select_image_from_gallery">101</integer>
+    <integer name="request_code_open_camera">100</integer>
+</resources>

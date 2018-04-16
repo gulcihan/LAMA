@@ -45,6 +45,8 @@ public abstract class BaseLocationActivity extends BaseActivity implements MyLoc
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
         if (resultCode == RESULT_OK && requestCode == LOCATION_SERVICES_REQUEST_CODE) {
             requestLocation();
 

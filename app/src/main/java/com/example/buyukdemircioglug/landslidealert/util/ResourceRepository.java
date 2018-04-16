@@ -29,16 +29,16 @@ public class ResourceRepository {
         return resourceRepository;
     }
 
-    public void getString(@StringRes int resId) {
-        context.getString(resId);
+    public String getString(@StringRes int resId) {
+        return context.getString(resId);
     }
 
-    public void getInteger(@IntegerRes int resId) {
-        context.getResources().getInteger(resId);
+    public int getInteger(@IntegerRes int resId) {
+        return context.getResources().getInteger(resId);
     }
 
-    public void getColor(@ColorRes int resId) {
-        ContextCompat.getColor(context, resId);
+    public int getColor(@ColorRes int resId) {
+        return ContextCompat.getColor(context, resId);
     }
 
     public Locale getDefaultLocale() {

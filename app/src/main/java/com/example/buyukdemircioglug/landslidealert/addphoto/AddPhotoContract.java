@@ -10,7 +10,7 @@ public interface AddPhotoContract {
 
     interface View extends BaseView<Presenter> {
 
-        void captureImage();
+        void showAddPhotoDialog();
 
         void sendEmail();
 
@@ -21,6 +21,10 @@ public interface AddPhotoContract {
         void onAddPhotoButtonClicked();
 
         void onSendButtonClicked();
+
+        void choosePhotoFromGallerySelected();
+
+        void takePhotoWithCameraSelected();
 
     }
 }
