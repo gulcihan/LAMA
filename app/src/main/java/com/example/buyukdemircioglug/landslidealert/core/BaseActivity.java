@@ -12,24 +12,23 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-import com.canelmas.let.DeniedPermission;
-import com.canelmas.let.Let;
-import com.canelmas.let.RuntimePermissionListener;
-import com.canelmas.let.RuntimePermissionRequest;
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.navigation.ActivityNavigationBundle;
 import com.example.buyukdemircioglug.landslidealert.core.navigation.FragmentNavigationBundle;
 import com.example.buyukdemircioglug.landslidealert.core.navigation.NavigationBundle;
 
-import java.util.List;
-
 import butterknife.ButterKnife;
+import icepick.Icepick;
 
-public abstract class BaseActivity extends AppCompatActivity implements RuntimePermissionListener {
+public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
+        Icepick.restoreInstanceState(this, savedInstanceState);
+
+        setContentView(getContentResourceId());
 
         if (savedInstanceState == null) {
             final Fragment fragment = getContainedFragment();
@@ -39,12 +38,6 @@ public abstract class BaseActivity extends AppCompatActivity implements RuntimeP
             }
         }
 
-        createPresenter();
-
-        ButterKnife.bind(this);
-
-        setContentView(getContentResourceId());
-
         final Toolbar toolbar = findViewById(R.id.toolbar);
 
         if (hasToolbar()) {
@@ -53,6 +46,12 @@ public abstract class BaseActivity extends AppCompatActivity implements RuntimeP
         } else if (toolbar != null) {
             toolbar.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Icepick.saveInstanceState(this, outState);
     }
 
     /**
@@ -79,21 +78,6 @@ public abstract class BaseActivity extends AppCompatActivity implements RuntimeP
 
     public ActionBar getToolBar() {
         return getSupportActionBar();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        Let.handle(this, requestCode, permissions, grantResults);
-    }
-
-    @Override
-    public void onShowPermissionRationale(List<String> permissionList, RuntimePermissionRequest permissionRequest) {
-        permissionRequest.retry();
-    }
-
-    @Override
-    public void onPermissionDenied(List<DeniedPermission> deniedPermissionList) {
-        // Do nothing
     }
 
     public void handleNavigation(NavigationBundle navigationBundle) {
@@ -209,12 +193,5 @@ public abstract class BaseActivity extends AppCompatActivity implements RuntimeP
      * @return Fragment.
      */
     protected abstract Fragment getContainedFragment();
-
-    /**
-     * Get related presenter instance of the added fragment.
-     *
-     * @return Fragment.
-     */
-    protected abstract void createPresenter();
 
 }

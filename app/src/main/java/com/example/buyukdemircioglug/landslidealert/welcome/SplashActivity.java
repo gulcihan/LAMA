@@ -48,12 +48,6 @@ public class SplashActivity extends BaseActivity {
         return null;
     }
 
-    @Override
-    protected void createPresenter() {
-        // TODO ask Gunes
-    }
-
-
     @AskPermission(Manifest.permission.ACCESS_FINE_LOCATION)
     private void navigateToUserInputScreen() {
         SplashActivity.this.startActivity(MainActivity.newIntent(SplashActivity.this));

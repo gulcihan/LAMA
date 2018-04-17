@@ -3,12 +3,7 @@ package com.example.buyukdemircioglug.landslidealert.infoform;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.example.buyukdemircioglug.landslidealert.addphoto.AddPhotoContract;
-import com.example.buyukdemircioglug.landslidealert.addphoto.AddPhotoFragmentBuilder;
-import com.example.buyukdemircioglug.landslidealert.addphoto.AddPhotoPresenter;
-import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
 import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
-import com.example.buyukdemircioglug.landslidealert.core.navigation.FragmentNavigationBundle;
 import com.example.buyukdemircioglug.landslidealert.util.DateTimeUtil;
 import com.example.buyukdemircioglug.landslidealert.util.ResourceRepository;
 
@@ -18,25 +13,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class LandslideInformationPresenter implements LandslideInformationContract.Presenter {
+public class LandslideInformationPresenter extends BasePresenter<LandslideInformationView> {
 
-    private final LandslideInformationContract.View view;
+    public void onContinueButtonClicked(@NonNull LandslideInfo landslideInfo) {
+        if (validateInputs(landslideInfo)) {
 
-    public LandslideInformationPresenter(@NonNull LandslideInformationContract.View view) {
-        this.view = view;
-        this.view.setPresenter(this);
-    }
-
-    @Override
-    public void start() {
-        showDateInfo();
-        showTimeInfo();
-        showLocation();
-    }
-
-    @Override
-    public void stop() {
-
+//            ifViewAttached(view -> view.handleNavigation(
+//                    new FragmentNavigationBundle(new AddPhotoFragmentBuilder().build(), this)
+//            ));
+        }
     }
 
     private void showDateInfo() {
@@ -46,7 +31,9 @@ public class LandslideInformationPresenter implements LandslideInformationContra
         // Display a date in day, month, year format
         final DateFormat formatter = new SimpleDateFormat(DateTimeUtil.DEFAULT_DATE_PATTERN, locale);
         final String today = formatter.format(date);
-        view.setDateInfo(today);
+
+        ifViewAttached(view -> view.setDateInfo(today));
+
     }
 
     private void showTimeInfo() {
@@ -56,46 +43,33 @@ public class LandslideInformationPresenter implements LandslideInformationContra
         // Display a time in hour and minute format
         final DateFormat formatter = new SimpleDateFormat(DateTimeUtil.DEFAULT_TIME_PATTERN, locale);
         final String time = formatter.format(date);
-        view.setTimeInfo(time);
-    }
 
-    private void showLocation() {
-        // TODO location will be handled.
-    }
-
-    @Override
-    public void onContinueButtonClicked(@NonNull LandslideInfo landslideInfo) {
-        if (validateInputs(landslideInfo)) {
-            final BaseFragment fragment = new AddPhotoFragmentBuilder().build();
-            final BasePresenter presenter = new AddPhotoPresenter((AddPhotoContract.View) fragment);
-
-            view.handleNavigation(new FragmentNavigationBundle(fragment, presenter));
-        }
+        ifViewAttached(view -> view.setTimeInfo(time));
     }
 
     private boolean validateInputs(@NonNull LandslideInfo info) {
         // Username Validation
         if (TextUtils.isEmpty(info.getUsername())) {
-            view.showErrorForUserName();
+            ifViewAttached(LandslideInformationView::showErrorForUserName);
 
         } else {
-            view.setUserNameAsValid();
+            ifViewAttached(LandslideInformationView::setUserNameAsValid);
         }
 
         // Name Validation
         if (TextUtils.isEmpty(info.getName())) {
-            view.showErrorForName();
+            ifViewAttached(LandslideInformationView::showErrorForName);
 
         } else {
-            view.setNameAsValid();
+            ifViewAttached(LandslideInformationView::setNameAsValid);
         }
 
         // Surname Validation
         if (TextUtils.isEmpty(info.getSurname())) {
-            view.showErrorForSurname();
+            ifViewAttached(LandslideInformationView::showErrorForSurname);
 
         } else {
-            view.setSurnameAsValid();
+            ifViewAttached(LandslideInformationView::setSurnameAsValid);
         }
 
         return !TextUtils.isEmpty(info.getUsername())

@@ -15,7 +15,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 @FragmentWithArgs
-public class LandslideInformationFragment extends BaseFragment implements LandslideInformationContract.View {
+public class LandslideInformationFragment extends BaseFragment<LandslideInformationView,
+        LandslideInformationPresenter, LandslideInformationViewState>
+        implements LandslideInformationView {
 
     @BindView(R.id.fragment_landslide_information_edit_text_username)
     LAMAInlineErrorEditText editTextUsername;
@@ -50,19 +52,9 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
     @BindView(R.id.fragment_user_input_button_continue)
     LAMAButton buttonContinue;
 
-    private LandslideInformationContract.Presenter presenter;
-
-    private LandslideInfo landslideInfo;
-
     @Override
     protected int getResourceLayoutId() {
         return R.layout.fragment_landslide_information;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        presenter.start();
     }
 
     @Override
@@ -70,13 +62,21 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
         setToolbarTitle(getString(R.string.info_form_screen_title));
     }
 
+    @NonNull
     @Override
-    public void setPresenter(@NonNull LandslideInformationContract.Presenter presenter) {
-        this.presenter = presenter;
+    public LandslideInformationPresenter createPresenter() {
+        return new LandslideInformationPresenter();
     }
 
-    public void setLocationText(String locationText) {
-        textViewLocation.setText(getString(R.string.location, locationText));
+    @NonNull
+    @Override
+    public LandslideInformationViewState createViewState() {
+        return new LandslideInformationViewState();
+    }
+
+    @Override
+    public void onNewViewStateInstance() {
+        // No operation needed.
     }
 
     @OnClick(R.id.fragment_user_input_button_continue)
@@ -92,11 +92,6 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
     @Override
     public void setTimeInfo(String time) {
         textViewTime.setText(time);
-    }
-
-    @Override
-    public void setLocationInfo(String locationInfo) {
-
     }
 
     @Override
@@ -128,6 +123,9 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
     public void setSurnameAsValid() {
         setInputFieldAsValid(editTextSurname);
     }
+    public void setLocationText(String locationText) {
+        textViewLocation.setText(getString(R.string.location, locationText));
+    }
 
     private void showErrorForInputField(LAMAInlineErrorEditText editText) {
         editText.setErrorState(true);
@@ -139,7 +137,7 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
     }
 
     private LandslideInfo getLandslideInfoPOJO() {
-        landslideInfo = new LandslideInfo(
+        return new LandslideInfo(
                 editTextUsername.getTextAsString(),
                 editTextName.getTextAsString(),
                 editTextSurname.getTextAsString(),
@@ -148,7 +146,5 @@ public class LandslideInformationFragment extends BaseFragment implements Landsl
                 editTextDamageDescription.getTextAsString(),
                 editTextOtherObservations.getTextAsString()
         );
-
-        return landslideInfo;
     }
 }

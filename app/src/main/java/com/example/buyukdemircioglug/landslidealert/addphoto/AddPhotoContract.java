@@ -8,23 +8,23 @@ import com.example.buyukdemircioglug.landslidealert.core.BaseView;
  */
 public interface AddPhotoContract {
 
-    interface View extends BaseView<Presenter> {
-
-        void showAddPhotoDialog();
-
-        void sendEmail();
-
-    }
-
-    interface Presenter extends BasePresenter {
-
-        void onAddPhotoButtonClicked();
-
-        void onSendButtonClicked();
-
-        void choosePhotoFromGallerySelected();
-
-        void takePhotoWithCameraSelected();
-
-    }
+//    interface View extends BaseView<Presenter> {
+//
+//        void showAddPhotoDialog();
+//
+//        void sendEmail();
+//
+//    }
+//
+//    interface Presenter extends BasePresenter {
+//
+//        void onAddPhotoButtonClicked();
+//
+//        void onSendButtonClicked();
+//
+//        void choosePhotoFromGallerySelected();
+//
+//        void takePhotoWithCameraSelected();
+//
+//    }
 }

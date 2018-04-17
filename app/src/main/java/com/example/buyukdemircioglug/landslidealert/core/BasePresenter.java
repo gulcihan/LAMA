@@ -1,9 +1,8 @@
 package com.example.buyukdemircioglug.landslidealert.core;
 
-public interface BasePresenter {
+import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
 
-    void start();
+public abstract class BasePresenter<View extends BaseView> extends MvpBasePresenter<View> {
 
-    void stop();
 
 }

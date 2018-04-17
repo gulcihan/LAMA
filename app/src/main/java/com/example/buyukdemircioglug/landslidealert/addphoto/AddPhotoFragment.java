@@ -1,6 +1,7 @@
 package com.example.buyukdemircioglug.landslidealert.addphoto;
 
 
+import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,20 +9,17 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.buyukdemircioglug.landslidealert.R;
-import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 @FragmentWithArgs
-public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.View {
+public class AddPhotoFragment extends Fragment {
 
     @BindView(R.id.fragment_add_photo_image_view_one)
     ImageView imageViewOne;
@@ -35,23 +33,18 @@ public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.V
     @BindView(R.id.fragment_add_photo_image_view_four)
     ImageView imageViewFour;
 
-    private AddPhotoContract.Presenter presenter;
+    //private AddPhotoContract.Presenter presenter;
     private ImageView selectedImageView;
 
-    @Override
-    protected int getResourceLayoutId() {
-        return R.layout.fragment_add_photo;
-    }
-
-    @Override
-    protected void initUserInterface(LayoutInflater inflater, View rootView) {
-        setToolbarTitle(getString(R.string.add_photo_screen_title));
-    }
-
-    @Override
-    public void setPresenter(AddPhotoContract.Presenter presenter) {
-        this.presenter = presenter;
-    }
+//    @Override
+//    protected int getResourceLayoutId() {
+//        return R.layout.fragment_add_photo;
+//    }
+//
+//    @Override
+//    protected void initUserInterface(LayoutInflater inflater, View rootView) {
+//        setToolbarTitle(getString(R.string.add_photo_screen_title));
+//    }
 
     @OnClick(R.id.fragment_add_photo_image_view_one)
     public void onAddPhotoOneButtonClicked() {
@@ -79,13 +72,12 @@ public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.V
 
     @OnClick(R.id.fragment_add_photo_button_send)
     public void onSendButtonClicked() {
-        presenter.onSendButtonClicked();
+        //presenter.onSendButtonClicked();
     }
 
     /**
      * Launching camera app to capture image
      */
-    @Override
     public void showAddPhotoDialog() {
         final AlertDialog.Builder pictureDialog = new AlertDialog.Builder(getActivity());
         pictureDialog.setTitle("Select Action");
@@ -97,10 +89,10 @@ public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.V
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
-                                presenter.choosePhotoFromGallerySelected();
+                                //presenter.choosePhotoFromGallerySelected();
                                 break;
                             case 1:
-                                presenter.takePhotoWithCameraSelected();
+                                //presenter.takePhotoWithCameraSelected();
                                 break;
                         }
                     }
@@ -108,7 +100,6 @@ public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.V
         pictureDialog.show();
     }
 
-    @Override
     public void sendEmail() {
         final String mailto = "mailto:bob@example.org" +
                 "?cc=" + "alice@example.com" +
@@ -145,7 +136,7 @@ public class AddPhotoFragment extends BaseFragment implements AddPhotoContract.V
             Toast.makeText(getActivity(), "Sorry! Your device doesn't support camera", Toast.LENGTH_LONG).show();
 
         } else {
-            presenter.onAddPhotoButtonClicked();
+            //presenter.onAddPhotoButtonClicked();
         }
     }
 
