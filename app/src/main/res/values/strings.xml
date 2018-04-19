@@ -8,8 +8,12 @@
     <string name="surname_hint">Soyad</string>
     <string name="event_location_hint">Olay yeri</string>
     <string name="event_time_hint">Olay zamanı</string>
-    <string name="damage_description_hint">Hasar durumu (bina, yol, tarım arazisi vb.)</string>
-    <string name="other_observations_hint">Ek gözlemler (oluş şekli, hızı, hareket eden kaya ve toprak bilgisi vb.)</string>
+    <string name="damage_description_hint">Hasar durumu</string>
+    <string name="damage_description_info">Eğer varsa bina, yol, tarım arazisi vb. gibi yerlerin
+        aldığı hasar durumunu yazabilirsiniz.</string>
+    <string name="other_observations_hint">Ek gözlemler</string>
+    <string name="other_observations_info">Ek olarak gözlemdiğiniz olayın oluş şekli, hızı,
+        hareket eden kaya veya toprağın olup olmadığı vb. bilgilerini yazabilirsiniz.</string>
     <string name="input_not_valid_error_text">*Lütfen bu alan için geçerli bir değer giriniz.</string>
     <string name="date">Tarih</string>
     <string name="time">Saat</string>

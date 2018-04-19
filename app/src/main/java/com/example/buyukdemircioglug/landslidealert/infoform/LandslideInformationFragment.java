@@ -3,13 +3,12 @@ package com.example.buyukdemircioglug.landslidealert.infoform;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
-import com.example.buyukdemircioglug.landslidealert.view.LAMAButton;
-import com.example.buyukdemircioglug.landslidealert.view.LAMAInlineErrorEditText;
-import com.example.buyukdemircioglug.landslidealert.view.LAMATextView;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
+import com.hkm.ui.processbutton.iml.ActionProcessButton;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -20,37 +19,37 @@ public class LandslideInformationFragment extends BaseFragment<LandslideInformat
         implements LandslideInformationView {
 
     @BindView(R.id.fragment_landslide_information_edit_text_username)
-    LAMAInlineErrorEditText editTextUsername;
+    EditText editTextUsername;
 
     @BindView(R.id.fragment_landslide_information_edit_text_name)
-    LAMAInlineErrorEditText editTextName;
+    EditText editTextName;
 
     @BindView(R.id.fragment_landslide_information_edit_text_surname)
-    LAMAInlineErrorEditText editTextSurname;
-
-    @BindView(R.id.fragment_landslide_information_edit_text_event_location)
-    LAMAInlineErrorEditText editTextEventLocation;
-
-    @BindView(R.id.fragment_landslide_information_edit_text_event_time)
-    LAMAInlineErrorEditText editTextEventTime;
-
+    EditText editTextSurname;
+    //
+//    @BindView(R.id.fragment_landslide_information_edit_text_event_location)
+//    LAMAInlineErrorEditText editTextEventLocation;
+//
+//    @BindView(R.id.fragment_landslide_information_edit_text_event_time)
+//    LAMAInlineErrorEditText editTextEventTime;
+//
     @BindView(R.id.fragment_landslide_information_edit_text_damage_description)
-    LAMAInlineErrorEditText editTextDamageDescription;
+    EditText editTextDamageDescription;
 
     @BindView(R.id.fragment_landslide_information_edit_text_other_observations)
-    LAMAInlineErrorEditText editTextOtherObservations;
-
-    @BindView(R.id.fragment_user_input_text_view_date)
-    LAMATextView textViewDate;
-
-    @BindView(R.id.fragment_user_input_text_view_time)
-    LAMATextView textViewTime;
-
-    @BindView(R.id.fragment_user_input_text_view_location)
-    LAMATextView textViewLocation;
-
-    @BindView(R.id.fragment_user_input_button_continue)
-    LAMAButton buttonContinue;
+    EditText editTextOtherObservations;
+    //
+//    @BindView(R.id.fragment_user_input_text_view_date)
+//    LAMATextView textViewDate;
+//
+//    @BindView(R.id.fragment_user_input_text_view_time)
+//    LAMATextView textViewTime;
+//
+//    @BindView(R.id.fragment_user_input_text_view_location)
+//    LAMATextView textViewLocation;
+//
+    @BindView(R.id.fragment_landslide_information_button_continue)
+    ActionProcessButton buttonContinue;
 
     @Override
     protected int getResourceLayoutId() {
@@ -79,72 +78,73 @@ public class LandslideInformationFragment extends BaseFragment<LandslideInformat
         // No operation needed.
     }
 
-    @OnClick(R.id.fragment_user_input_button_continue)
+    @OnClick(R.id.fragment_landslide_information_button_continue)
     public void onButtonContinueClicked() {
         presenter.onContinueButtonClicked(getLandslideInfoPOJO());
     }
 
     @Override
     public void setDateInfo(String date) {
-        textViewDate.setText(date);
+        //textViewDate.setText(date);
     }
 
     @Override
     public void setTimeInfo(String time) {
-        textViewTime.setText(time);
+        //textViewTime.setText(time);
     }
 
     @Override
     public void showErrorForUserName() {
-        showErrorForInputField(editTextUsername);
+        //showErrorForInputField(editTextUsername);
     }
 
     @Override
     public void setUserNameAsValid() {
-        setInputFieldAsValid(editTextUsername);
+        //setInputFieldAsValid(editTextUsername);
     }
 
     @Override
     public void showErrorForName() {
-        showErrorForInputField(editTextName);
+        //showErrorForInputField(editTextName);
     }
 
     @Override
     public void setNameAsValid() {
-        setInputFieldAsValid(editTextName);
+        //setInputFieldAsValid(editTextName);
     }
 
     @Override
     public void showErrorForSurname() {
-        showErrorForInputField(editTextSurname);
+        //showErrorForInputField(editTextSurname);
     }
 
     @Override
     public void setSurnameAsValid() {
-        setInputFieldAsValid(editTextSurname);
+        //setInputFieldAsValid(editTextSurname);
     }
+
     public void setLocationText(String locationText) {
-        textViewLocation.setText(getString(R.string.location, locationText));
+        //textViewLocation.setText(getString(R.string.location, locationText));
     }
 
-    private void showErrorForInputField(LAMAInlineErrorEditText editText) {
-        editText.setErrorState(true);
-        editText.setErrorText(getString(R.string.input_not_valid_error_text));
+    private void showErrorForInputField(EditText editText) {
+        //editText.setErrorState(true);
+        //editText.setErrorText(getString(R.string.input_not_valid_error_text));
     }
 
-    private void setInputFieldAsValid(LAMAInlineErrorEditText editText) {
-        editText.setErrorState(false);
+    private void setInputFieldAsValid(EditText editText) {
+        //editText.setErrorState(false);
     }
 
     private LandslideInfo getLandslideInfoPOJO() {
         return new LandslideInfo(
-                editTextUsername.getTextAsString(),
-                editTextName.getTextAsString(),
-                editTextSurname.getTextAsString(),
-                editTextEventLocation.getTextAsString(),
-                editTextEventTime.getTextAsString(),
-                editTextDamageDescription.getTextAsString(),
-                editTextOtherObservations.getTextAsString()
+                editTextUsername.getText().toString(),
+                editTextName.getText().toString(),
+                editTextSurname.getText().toString(),
+                "Istanbul",
+                "15:30",
+                editTextDamageDescription.getText().toString(),
+                editTextOtherObservations.getText().toString()
         );
     }
 }

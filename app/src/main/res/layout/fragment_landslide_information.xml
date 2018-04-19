@@ -1,24 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/white"
         android:orientation="vertical"
-        android:padding="@dimen/lama_spacing_medium">
+        android:padding="16dp">
 
         <!--User Name-->
-        <com.example.buyukdemircioglug.landslidealert.view.LAMAInlineErrorEditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/fragment_landslide_information_edit_text_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/user_name_hint"
-            android:inputType="text"
-            android:maxLength="@integer/default_input_length"
-            android:textAppearance="@style/LAMATextViewTheme" />
+            android:textCursorDrawable="@drawable/text_cursor"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/accent" />
 
         <!--Name & Surname-->
         <LinearLayout
@@ -26,99 +27,80 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.example.buyukdemircioglug.landslidealert.view.LAMAInlineErrorEditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/fragment_landslide_information_edit_text_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_weight="1"
                 android:hint="@string/name_hint"
-                android:inputType="text"
-                android:maxLength="@integer/default_input_length"
-                android:textAppearance="@style/LAMATextViewTheme" />
+                android:textCursorDrawable="@drawable/text_cursor"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="@color/accent" />
 
-            <com.example.buyukdemircioglug.landslidealert.view.LAMAInlineErrorEditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/fragment_landslide_information_edit_text_surname"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/surname_hint"
-                android:inputType="text"
-                android:maxLength="@integer/default_input_length"
-                android:textAppearance="@style/LAMATextViewTheme" />
+                android:textCursorDrawable="@drawable/text_cursor"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="@color/accent" />
 
         </LinearLayout>
 
-        <!--Event Location-->
-        <com.example.buyukdemircioglug.landslidealert.view.LAMAInlineErrorEditText
-            android:id="@+id/fragment_landslide_information_edit_text_event_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/event_location_hint"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:maxLength="@integer/default_input_length"
-            android:textAppearance="@style/LAMATextViewTheme" />
-
-        <!--Event Time-->
-        <com.example.buyukdemircioglug.landslidealert.view.LAMAInlineErrorEditText
-            android:id="@+id/fragment_landslide_information_edit_text_event_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/event_time_hint"
-            android:imeOptions="actionDone"
-            android:inputType="datetime"
-            android:textAppearance="@style/LAMATextViewTheme" />
-
         <!--Damage Description-->
-        <com.example.buyukdemircioglug.landslidealert.view.LAMAInlineErrorEditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/fragment_landslide_information_edit_text_damage_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/damage_description_hint"
-            android:inputType="text"
-            android:maxLength="@integer/long_input_length"
-            android:textAppearance="@style/LAMATextViewTheme" />
+            android:textCursorDrawable="@drawable/text_cursor"
+            app:met_floatingLabel="highlight"
+            app:met_iconRight="@drawable/ic_username"
+            app:met_primaryColor="@color/accent" />
 
         <!--Other Observations-->
-        <com.example.buyukdemircioglug.landslidealert.view.LAMAInlineErrorEditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/fragment_landslide_information_edit_text_other_observations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/other_observations_hint"
-            android:inputType="text"
-            android:maxLength="@integer/long_input_length"
-            android:textAppearance="@style/LAMATextViewTheme" />
+            android:textCursorDrawable="@drawable/text_cursor"
+            app:met_floatingLabel="highlight"
+            app:met_iconRight="@drawable/ic_username"
+            app:met_primaryColor="@color/accent" />
 
-        <!--WILL BE DELETED-->
-        <com.example.buyukdemircioglug.landslidealert.view.LAMATextView
-            android:id="@+id/fragment_user_input_text_view_date"
+        <com.hkm.ui.processbutton.iml.ActionProcessButton
+            android:id="@+id/fragment_landslide_information_button_continue"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/date"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/button_text_continue"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:pb_colorComplete="@color/green_complete"
+            app:pb_colorNormal="@color/accent"
+            app:pb_colorPressed="@color/accent_dark"
+            app:pb_textComplete="Successful"
+            app:pb_textProgress="Loading" />
 
-        <!--WILL BE DELETED-->
-        <com.example.buyukdemircioglug.landslidealert.view.LAMATextView
-            android:id="@+id/fragment_user_input_text_view_time"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/fragment_landslide_information_text_view_error"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/time"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-        <!--WILL BE DELETED-->
-        <com.example.buyukdemircioglug.landslidealert.view.LAMATextView
-            android:id="@+id/fragment_user_input_text_view_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/location"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-        <com.example.buyukdemircioglug.landslidealert.view.LAMAButton
-            android:id="@+id/fragment_user_input_button_continue"
-            style="@style/LAMAButtonTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_continue" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Bad username or password"
+            android:textColor="@color/red"
+            android:textSize="14sp"
+            android:visibility="gone" />
 
     </LinearLayout>
 

@@ -8,8 +8,12 @@
     <string name="surname_hint">Surname</string>
     <string name="event_location_hint">Event location</string>
     <string name="event_time_hint">Event Time</string>
-    <string name="damage_description_hint">Damage description (building, road, agricultural field, forest …)</string>
-    <string name="other_observations_hint">Other observations (occurrence story, velocity, description of displaced rock and soil …)</string>
+    <string name="damage_description_hint">Damage description</string>
+    <string name="damage_description_info">If you see any damage on the buildings, roads,
+        agricultural fields or forests etc you may enter info about them.</string>
+    <string name="other_observations_hint">Other observations</string>
+    <string name="other_observations_info">If you observe one of the following factors
+        such as occurrence story, velocity, description of displaced rock and soil etc you may enter info about them.</string>
     <string name="input_not_valid_error_text">*Please provide a valid input for this field.</string>
     <string name="date">Date</string>
     <string name="time">Time</string>

@@ -48,6 +48,13 @@ dependencies {
     implementation "frankiesardo:icepick:3.2.0"
     annotationProcessor "frankiesardo:icepick-processor:3.2.0"
 
+    // Constraint Layout
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+
+    // UI
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'com.hkm:hkmprocessbuttons:1.2.4'
+
     // Location
     implementation 'com.google.android.gms:play-services-location:15.0.0'
 
