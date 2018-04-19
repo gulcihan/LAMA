@@ -3,7 +3,9 @@ package com.example.buyukdemircioglug.landslidealert.addphoto;
 import android.content.Intent;
 import android.provider.MediaStore;
 
-public class AddPhotoPresenter {
+import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
+
+public class AddPhotoPresenter extends BasePresenter<AddPhotoView> {
 
     public void onAddPhotoButtonClicked() {
         //view.showAddPhotoDialog();

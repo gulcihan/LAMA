@@ -6,6 +6,7 @@ public class LandslideInformationViewState implements BaseViewState<LandslideInf
 
     @Override
     public void apply(LandslideInformationView view, boolean retained) {
-        view.setTimeInfo("ASD");
+        //view.showLoginForm();
     }
+
 }

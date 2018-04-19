@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/fragment_landslide_information_layout_info_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -73,7 +74,7 @@
             app:met_iconRight="@drawable/ic_username"
             app:met_primaryColor="@color/accent" />
 
-        <com.hkm.ui.processbutton.iml.ActionProcessButton
+        <com.dd.processbutton.iml.ActionProcessButton
             android:id="@+id/fragment_landslide_information_button_continue"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -89,18 +90,6 @@
             app:pb_colorPressed="@color/accent_dark"
             app:pb_textComplete="Successful"
             app:pb_textProgress="Loading" />
-
-        <TextView
-            android:id="@+id/fragment_landslide_information_text_view_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Bad username or password"
-            android:textColor="@color/red"
-            android:textSize="14sp"
-            android:visibility="gone" />
 
     </LinearLayout>
 

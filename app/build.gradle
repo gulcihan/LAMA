@@ -53,7 +53,7 @@ dependencies {
 
     // UI
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
-    implementation 'com.hkm:hkmprocessbuttons:1.2.4'
+    implementation 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
 
     // Location
     implementation 'com.google.android.gms:play-services-location:15.0.0'

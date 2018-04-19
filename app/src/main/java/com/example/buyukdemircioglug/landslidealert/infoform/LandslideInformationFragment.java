@@ -1,22 +1,29 @@
 package com.example.buyukdemircioglug.landslidealert.infoform;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
+import com.dd.processbutton.iml.ActionProcessButton;
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
+import com.example.buyukdemircioglug.landslidealert.util.KeyboardUtil;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
-import com.hkm.ui.processbutton.iml.ActionProcessButton;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 @FragmentWithArgs
-public class LandslideInformationFragment extends BaseFragment<LandslideInformationView,
-        LandslideInformationPresenter, LandslideInformationViewState>
+public class LandslideInformationFragment
+        extends BaseFragment<LandslideInformationView, LandslideInformationPresenter, LandslideInformationViewState>
         implements LandslideInformationView {
+    @BindView(R.id.fragment_landslide_information_layout_info_form)
+    LinearLayout layoutInfoForm;
 
     @BindView(R.id.fragment_landslide_information_edit_text_username)
     EditText editTextUsername;
@@ -50,6 +57,15 @@ public class LandslideInformationFragment extends BaseFragment<LandslideInformat
 //
     @BindView(R.id.fragment_landslide_information_button_continue)
     ActionProcessButton buttonContinue;
+//
+//    @BindView(R.id.fragment_landslide_information_text_view_error)
+//    TextView textViewError;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 
     @Override
     protected int getResourceLayoutId() {
@@ -80,60 +96,38 @@ public class LandslideInformationFragment extends BaseFragment<LandslideInformat
 
     @OnClick(R.id.fragment_landslide_information_button_continue)
     public void onButtonContinueClicked() {
+
+        // Check for empty fields
+        final String username = editTextUsername.getText().toString();
+        final String name = editTextName.getText().toString();
+        final String surname = editTextSurname.getText().toString();
+
+        layoutInfoForm.clearAnimation();
+
+        if (TextUtils.isEmpty(username)) {
+            editTextUsername.clearAnimation();
+            editTextUsername.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.shake));
+            return;
+        }
+
+        if (TextUtils.isEmpty(name)) {
+            editTextName.clearAnimation();
+            editTextName.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.shake));
+            return;
+        }
+
+        if (TextUtils.isEmpty(surname)) {
+            editTextSurname.clearAnimation();
+            editTextSurname.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.shake));
+            return;
+        }
+
+        // Hide keyboard
+        if (!KeyboardUtil.hideKeyboard(editTextUsername)) {
+            KeyboardUtil.hideKeyboard(editTextSurname);
+        }
+
         presenter.onContinueButtonClicked(getLandslideInfoPOJO());
-    }
-
-    @Override
-    public void setDateInfo(String date) {
-        //textViewDate.setText(date);
-    }
-
-    @Override
-    public void setTimeInfo(String time) {
-        //textViewTime.setText(time);
-    }
-
-    @Override
-    public void showErrorForUserName() {
-        //showErrorForInputField(editTextUsername);
-    }
-
-    @Override
-    public void setUserNameAsValid() {
-        //setInputFieldAsValid(editTextUsername);
-    }
-
-    @Override
-    public void showErrorForName() {
-        //showErrorForInputField(editTextName);
-    }
-
-    @Override
-    public void setNameAsValid() {
-        //setInputFieldAsValid(editTextName);
-    }
-
-    @Override
-    public void showErrorForSurname() {
-        //showErrorForInputField(editTextSurname);
-    }
-
-    @Override
-    public void setSurnameAsValid() {
-        //setInputFieldAsValid(editTextSurname);
-    }
-
-    public void setLocationText(String locationText) {
-        //textViewLocation.setText(getString(R.string.location, locationText));
-    }
-
-    private void showErrorForInputField(EditText editText) {
-        //editText.setErrorState(true);
-        //editText.setErrorText(getString(R.string.input_not_valid_error_text));
-    }
-
-    private void setInputFieldAsValid(EditText editText) {
-        //editText.setErrorState(false);
     }
 
     private LandslideInfo getLandslideInfoPOJO() {

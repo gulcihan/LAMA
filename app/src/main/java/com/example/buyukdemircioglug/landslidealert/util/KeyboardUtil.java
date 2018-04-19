@@ -8,16 +8,11 @@
  */
 package com.example.buyukdemircioglug.landslidealert.util;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Rect;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 public final class KeyboardUtil {
-
-    private static final int POSSIBLE_KEYBOARD_LENGTH = 100;
 
     /**
      * Private constructor for util class.
@@ -26,71 +21,33 @@ public final class KeyboardUtil {
     }
 
     /**
-     * Utility method for showing keyboard.
+     * Hides the soft keyboard from screen
      *
-     * @param view which has keyboard focus
+     * @param view Usually the EditText, but in dynamically  layouts you should pass the layout
+     * instead of the EditText
+     * @return true, if keyboard has been hidden, otherwise false (i.e. the keyboard was not displayed
+     * on the screen or no Softkeyboard because device has hardware keyboard)
      */
-    public static void showKeyboard(View view) {
-        final InputMethodManager inputMethodManager = (InputMethodManager)
-                view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
-    }
+    public static boolean hideKeyboard(View view) {
 
-    /**
-     * Utility method for hiding keyboard.
-     *
-     * @param view which has keyboard focus
-     */
-    public static void hideKeyboard(View view) {
-        final InputMethodManager inputMethodManager = (InputMethodManager)
-                view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
-    /**
-     * Utility method for hiding keyboard.
-     *
-     * @param activity which as keyboard focus
-     */
-    public static void hideKeyboard(Activity activity) {
-        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        if (activity.getCurrentFocus() != null) {
-            final InputMethodManager inputMethodManager = (InputMethodManager)
-                    activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        if (view == null) {
+            throw new NullPointerException("View is null!");
         }
-    }
 
-    /**
-     * This utility method toggles the input method window display.
-     * If the input window is already displayed, it gets hidden.
-     * If not the input window will be displayed.
-     *
-     * @param view which has keyboard focus
-     */
-    public static void toggleKeyboard(View view) {
+        try {
+            InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        final InputMethodManager inputMethodManager = (InputMethodManager)
-                view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_IMPLICIT_ONLY);
-    }
+            if (imm == null) {
+                return false;
+            }
 
-    /**
-     * Checks if keyboard is visible.
-     *
-     * @param rootView root view of screen
-     * @return true if keyboard is open
-     */
-    public static boolean isKeyboardOpen(View rootView) {
-        final Rect r = new Rect();
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
-        //r will be populated with the coordinates of your view that area still visible.
-        rootView.getWindowVisibleDisplayFrame(r);
+        } catch (Exception e) {
+            return false;
+        }
 
-        final int heightDiff = rootView.getRootView().getHeight() - (r.bottom - r.top);
-
-        // if more than 100 pixels, its probably a keyboard...
-        return heightDiff > POSSIBLE_KEYBOARD_LENGTH;
+        return true;
     }
 
 }

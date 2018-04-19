@@ -1,25 +1,30 @@
 package com.example.buyukdemircioglug.landslidealert.addphoto;
 
 
-import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.buyukdemircioglug.landslidealert.R;
+import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 @FragmentWithArgs
-public class AddPhotoFragment extends Fragment {
+public class AddPhotoFragment
+        extends BaseFragment<AddPhotoView, AddPhotoPresenter, AddPhotoViewState>
+        implements AddPhotoView {
 
     @BindView(R.id.fragment_add_photo_image_view_one)
     ImageView imageViewOne;
@@ -33,18 +38,34 @@ public class AddPhotoFragment extends Fragment {
     @BindView(R.id.fragment_add_photo_image_view_four)
     ImageView imageViewFour;
 
-    //private AddPhotoContract.Presenter presenter;
     private ImageView selectedImageView;
 
-//    @Override
-//    protected int getResourceLayoutId() {
-//        return R.layout.fragment_add_photo;
-//    }
-//
-//    @Override
-//    protected void initUserInterface(LayoutInflater inflater, View rootView) {
-//        setToolbarTitle(getString(R.string.add_photo_screen_title));
-//    }
+    @Override
+    protected int getResourceLayoutId() {
+        return R.layout.fragment_add_photo;
+    }
+
+    @Override
+    protected void initUserInterface(LayoutInflater inflater, View rootView) {
+        setToolbarTitle(getString(R.string.add_photo_screen_title));
+    }
+
+    @NonNull
+    @Override
+    public AddPhotoPresenter createPresenter() {
+        return new AddPhotoPresenter();
+    }
+
+    @NonNull
+    @Override
+    public AddPhotoViewState createViewState() {
+        return new AddPhotoViewState();
+    }
+
+    @Override
+    public void onNewViewStateInstance() {
+
+    }
 
     @OnClick(R.id.fragment_add_photo_image_view_one)
     public void onAddPhotoOneButtonClicked() {
@@ -138,6 +159,11 @@ public class AddPhotoFragment extends Fragment {
         } else {
             //presenter.onAddPhotoButtonClicked();
         }
+    }
+
+    @Override
+    public void setDateInfo(String date) {
+
     }
 
 }

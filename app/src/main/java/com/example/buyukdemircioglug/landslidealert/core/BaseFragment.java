@@ -2,6 +2,7 @@
 package com.example.buyukdemircioglug.landslidealert.core;
 
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         Icepick.restoreInstanceState(this, savedInstanceState);
 
         final View rootView = inflater.inflate(getResourceLayoutId(), container, false);
+        unbinder = ButterKnife.bind(this, rootView);
         initUserInterface(inflater, rootView);
         return rootView;
     }
@@ -49,13 +51,16 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         Icepick.saveInstanceState(this, outState);
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        unbinder = ButterKnife.bind(this, view);
-    }
+//    @Override
+//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        Log.e("ASD", "onViewCreated");
+//        unbinder = ButterKnife.bind(this, view);
+//    }
 
-    @Override public void onDestroyView() {
+    @CallSuper
+    @Override
+    public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
