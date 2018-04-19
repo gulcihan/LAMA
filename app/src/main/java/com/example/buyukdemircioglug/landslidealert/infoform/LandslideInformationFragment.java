@@ -22,6 +22,7 @@ import butterknife.OnClick;
 public class LandslideInformationFragment
         extends BaseFragment<LandslideInformationView, LandslideInformationPresenter, LandslideInformationViewState>
         implements LandslideInformationView {
+
     @BindView(R.id.fragment_landslide_information_layout_info_form)
     LinearLayout layoutInfoForm;
 

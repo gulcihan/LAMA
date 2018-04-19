@@ -14,9 +14,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class LandslideInformationPresenter extends BasePresenter<LandslideInformationView> {
+class LandslideInformationPresenter extends BasePresenter<LandslideInformationView> {
 
-    public void onContinueButtonClicked(@NonNull LandslideInfo landslideInfo) {
+    void onContinueButtonClicked(@NonNull LandslideInfo landslideInfo) {
         ifViewAttached(view -> view.handleNavigation(
                 new FragmentNavigationBundle(new AddPhotoFragmentBuilder().build(), this)
         ));

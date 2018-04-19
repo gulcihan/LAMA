@@ -2,7 +2,6 @@ package com.example.buyukdemircioglug.landslidealert.addphoto;
 
 
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -64,7 +63,7 @@ public class AddPhotoFragment
 
     @Override
     public void onNewViewStateInstance() {
-
+        // No operation needed.
     }
 
     @OnClick(R.id.fragment_add_photo_image_view_one)
@@ -93,38 +92,34 @@ public class AddPhotoFragment
 
     @OnClick(R.id.fragment_add_photo_button_send)
     public void onSendButtonClicked() {
-        //presenter.onSendButtonClicked();
+        presenter.onSendButtonClicked();
     }
 
-    /**
-     * Launching camera app to capture image
-     */
+    @Override
     public void showAddPhotoDialog() {
         final AlertDialog.Builder pictureDialog = new AlertDialog.Builder(getActivity());
         pictureDialog.setTitle("Select Action");
 
         final String[] pictureDialogItems = {"Select photo from gallery", "Capture photo from camera"};
         pictureDialog.setItems(pictureDialogItems,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0:
-                                //presenter.choosePhotoFromGallerySelected();
-                                break;
-                            case 1:
-                                //presenter.takePhotoWithCameraSelected();
-                                break;
-                        }
+                (dialog, which) -> {
+                    switch (which) {
+                        case 0:
+                            presenter.choosePhotoFromGallerySelected();
+                            break;
+                        case 1:
+                            presenter.takePhotoWithCameraSelected();
+                            break;
                     }
                 });
         pictureDialog.show();
     }
 
+    @Override
     public void sendEmail() {
         final String mailto = "mailto:bob@example.org" +
                 "?cc=" + "alice@example.com" +
-                "&subject=" + Uri.encode("asdasd") +
+                "&subject=" + Uri.encode("!!! Landslide Alert !!!") +
                 "&body=" + Uri.encode(" wkehf wkjfkwehfkwf wkjfbwejkfb");
 
         final Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
@@ -144,9 +139,6 @@ public class AddPhotoFragment
         }
     }
 
-    /**
-     * Checking device has camera hardware or not
-     */
     private boolean isDeviceSupportCamera() {
         return getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
     }
@@ -157,13 +149,8 @@ public class AddPhotoFragment
             Toast.makeText(getActivity(), "Sorry! Your device doesn't support camera", Toast.LENGTH_LONG).show();
 
         } else {
-            //presenter.onAddPhotoButtonClicked();
+            presenter.onAddPhotoButtonClicked();
         }
-    }
-
-    @Override
-    public void setDateInfo(String date) {
-
     }
 
 }

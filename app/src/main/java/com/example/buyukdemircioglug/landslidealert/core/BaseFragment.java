@@ -1,13 +1,22 @@
 
 package com.example.buyukdemircioglug.landslidealert.core;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.buyukdemircioglug.landslidealert.R;
+import com.example.buyukdemircioglug.landslidealert.addphoto.AddPhotoFragment;
 import com.example.buyukdemircioglug.landslidealert.core.navigation.ActivityNavigationBundle;
 import com.example.buyukdemircioglug.landslidealert.core.navigation.FragmentNavigationBundle;
 import com.example.buyukdemircioglug.landslidealert.core.navigation.NavigationBundle;
@@ -15,9 +24,13 @@ import com.hannesdorfmann.fragmentargs.FragmentArgs;
 import com.hannesdorfmann.mosby3.mvp.viewstate.MvpViewStateFragment;
 import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 
+import java.io.IOException;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import icepick.Icepick;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Extend all your fragments from this base fragment.
@@ -51,13 +64,6 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         Icepick.saveInstanceState(this, outState);
     }
 
-//    @Override
-//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        Log.e("ASD", "onViewCreated");
-//        unbinder = ButterKnife.bind(this, view);
-//    }
-
     @CallSuper
     @Override
     public void onDestroyView() {
@@ -85,47 +91,47 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         }
     }
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//
-//        Log.e("ASD", "lskdjlkdf");
-//
-//        if (resultCode == RESULT_OK) {
-//            if (requestCode == getResources().getInteger(R.integer.request_code_select_image_from_gallery)) {
-//                if (data != null) {
-//                    final Uri contentURI = data.getData();
-//                    try {
-//                        final Fragment fragment = ((BaseActivity) getActivity()).getCurrentFragment();
-//
-//                        if (fragment != null && fragment instanceof AddPhotoFragment) {
-//                            ((AddPhotoFragment) fragment).setImage(
-//                                    MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), contentURI));
-//                        }
-//
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//
-//            } else if (requestCode == getResources().getInteger(R.integer.request_code_open_camera)) {
-//                final Bundle extras = data.getExtras();
-//
-//                if (extras != null) {
-//
-//                    final Fragment fragment = ((BaseActivity) getActivity()).getCurrentFragment();
-//
-//                    if (fragment != null && fragment instanceof AddPhotoFragment) {
-//                        ((AddPhotoFragment) fragment).setImage((Bitmap) extras.get("data"));
-//                    }
-//
-//                }
-//            }
-//
-//        }
-//
-//
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Log.e("ASD", "BaseFragment lskdjlkdf");
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == getResources().getInteger(R.integer.request_code_select_image_from_gallery)) {
+                if (data != null) {
+                    final Uri contentURI = data.getData();
+                    try {
+                        final Fragment fragment = ((BaseActivity) getActivity()).getCurrentFragment();
+
+                        if (fragment != null && fragment instanceof AddPhotoFragment) {
+                            ((AddPhotoFragment) fragment).setImage(
+                                    MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), contentURI));
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            } else if (requestCode == getResources().getInteger(R.integer.request_code_open_camera)) {
+                final Bundle extras = data.getExtras();
+
+                if (extras != null) {
+
+                    final Fragment fragment = ((BaseActivity) getActivity()).getCurrentFragment();
+
+                    if (fragment != null && fragment instanceof AddPhotoFragment) {
+                        ((AddPhotoFragment) fragment).setImage((Bitmap) extras.get("data"));
+                    }
+
+                }
+            }
+
+        }
+
+
+    }
 
     public String getFragmentTag() {
         return this.getClass().getSimpleName();

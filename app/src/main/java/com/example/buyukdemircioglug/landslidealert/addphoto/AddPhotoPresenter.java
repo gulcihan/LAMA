@@ -3,32 +3,35 @@ package com.example.buyukdemircioglug.landslidealert.addphoto;
 import android.content.Intent;
 import android.provider.MediaStore;
 
+import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
+import com.example.buyukdemircioglug.landslidealert.core.navigation.ActivityNavigationBundle;
+import com.example.buyukdemircioglug.landslidealert.util.ResourceRepository;
 
-public class AddPhotoPresenter extends BasePresenter<AddPhotoView> {
+class AddPhotoPresenter extends BasePresenter<AddPhotoView> {
 
-    public void onAddPhotoButtonClicked() {
-        //view.showAddPhotoDialog();
+    void onAddPhotoButtonClicked() {
+        ifViewAttached(AddPhotoView::showAddPhotoDialog);
     }
 
-    public void onSendButtonClicked() {
-        //view.sendEmail();
+    void onSendButtonClicked() {
+        ifViewAttached(AddPhotoView::sendEmail);
     }
 
-    public void choosePhotoFromGallerySelected() {
+    void choosePhotoFromGallerySelected() {
         final Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//        view.handleNavigation(new ActivityNavigationBundle(
-//                galleryIntent,
-//                ResourceRepository.getInstance().getInteger(R.integer.request_code_select_image_from_gallery))
-//        );
+        ifViewAttached(view -> view.handleNavigation(new ActivityNavigationBundle(
+                galleryIntent,
+                ResourceRepository.getInstance().getInteger(R.integer.request_code_select_image_from_gallery))
+        ));
     }
 
-    public void takePhotoWithCameraSelected() {
+    void takePhotoWithCameraSelected() {
         final Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-//        view.handleNavigation(new ActivityNavigationBundle(
-//                cameraIntent,
-//                ResourceRepository.getInstance().getInteger(R.integer.request_code_open_camera))
-//        );
+        ifViewAttached(view -> view.handleNavigation(new ActivityNavigationBundle(
+                cameraIntent,
+                ResourceRepository.getInstance().getInteger(R.integer.request_code_open_camera))
+        ));
     }
 
 }

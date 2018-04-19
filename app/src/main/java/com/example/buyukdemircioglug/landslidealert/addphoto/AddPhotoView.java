@@ -7,6 +7,8 @@ import com.example.buyukdemircioglug.landslidealert.core.BaseView;
  */
 public interface AddPhotoView extends BaseView {
 
-    void setDateInfo(String date);
+    void showAddPhotoDialog();
+
+    void sendEmail();
 
 }
