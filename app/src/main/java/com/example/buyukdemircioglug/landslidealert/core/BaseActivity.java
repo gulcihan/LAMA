@@ -1,6 +1,5 @@
 package com.example.buyukdemircioglug.landslidealert.core;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -9,7 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
 import com.example.buyukdemircioglug.landslidealert.R;
@@ -25,10 +23,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
-        Icepick.restoreInstanceState(this, savedInstanceState);
 
         setContentView(getContentResourceId());
+
+        ButterKnife.bind(this);
+        Icepick.restoreInstanceState(this, savedInstanceState);
 
         if (savedInstanceState == null) {
             final Fragment fragment = getContainedFragment();
@@ -97,20 +96,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         } else if (navigationBundle instanceof FragmentNavigationBundle) {
             replaceFragment(((FragmentNavigationBundle) navigationBundle).getFragment());
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        Log.e("ASD", "Base Activity");
-
-        if (resultCode == RESULT_OK) {
-            //presenter.onNavigationResult(requestCode, RESULT_CODE_OK, data)
-
-        } else {
-            //presenter.onNavigationResult(requestCode, RESULT_CODE_CANCELLED, data)
         }
     }
 

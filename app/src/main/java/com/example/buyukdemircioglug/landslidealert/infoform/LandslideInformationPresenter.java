@@ -18,7 +18,7 @@ class LandslideInformationPresenter extends BasePresenter<LandslideInformationVi
 
     void onContinueButtonClicked(@NonNull LandslideInfo landslideInfo) {
         ifViewAttached(view -> view.handleNavigation(
-                new FragmentNavigationBundle(new AddPhotoFragmentBuilder().build(), this)
+                new FragmentNavigationBundle(new AddPhotoFragmentBuilder(landslideInfo).build(), this)
         ));
     }
 

@@ -1,24 +1,40 @@
 package com.example.buyukdemircioglug.landslidealert.addphoto;
 
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.canelmas.let.AskPermission;
+import com.canelmas.let.DeniedPermission;
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
+import com.example.buyukdemircioglug.landslidealert.infoform.LandslideInfo;
+import com.example.buyukdemircioglug.landslidealert.util.ListUtil;
+import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static android.app.Activity.RESULT_OK;
 
 @FragmentWithArgs
 public class AddPhotoFragment
@@ -37,7 +53,12 @@ public class AddPhotoFragment
     @BindView(R.id.fragment_add_photo_image_view_four)
     ImageView imageViewFour;
 
+    @Arg
+    LandslideInfo landslideInfo;
+
     private ImageView selectedImageView;
+
+    private ArrayList<Bitmap> imageList = new ArrayList<>();
 
     @Override
     protected int getResourceLayoutId() {
@@ -116,14 +137,57 @@ public class AddPhotoFragment
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == getResources().getInteger(R.integer.request_code_select_image_from_gallery)) {
+                if (data != null) {
+                    final Uri contentURI = data.getData();
+                    try {
+                        setImage(MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), contentURI));
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            } else if (requestCode == getResources().getInteger(R.integer.request_code_open_camera)) {
+                final Bundle extras = data.getExtras();
+                if (extras != null) {
+                    setImage((Bitmap) extras.get("data"));
+                }
+            }
+        }
+    }
+
+    @AskPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    @Override
     public void sendEmail() {
         final String mailto = "mailto:bob@example.org" +
                 "?cc=" + "alice@example.com" +
                 "&subject=" + Uri.encode("!!! Landslide Alert !!!") +
-                "&body=" + Uri.encode(" wkehf wkjfkwehfkwf wkjfbwejkfb");
+                "&body=" + Uri.encode(getEmailBody());
 
         final Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse(mailto));
+
+        if (!ListUtil.isEmpty(imageList)) {
+            for (Bitmap bitmap : imageList) {
+
+                Log.e("ASD", bitmap.toString());
+
+                final String pathOfBitmap = MediaStore.Images.Media.insertImage(
+                        getActivity().getContentResolver(),
+                        bitmap,
+                        "title",
+                        null
+                );
+
+                final Uri bmpUri = Uri.parse(pathOfBitmap);
+                emailIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
+            }
+        }
 
         try {
             startActivity(emailIntent);
@@ -133,8 +197,25 @@ public class AddPhotoFragment
         }
     }
 
-    public void setImage(Bitmap imageBitmap) {
+    @Override
+    public void onPermissionDenied(List<DeniedPermission> deniedPermissionList) {
+        Snackbar.make(imageViewFour, "You didn't grant a permission :/", Snackbar
+                .LENGTH_LONG).show();
+    }
+
+    private String getEmailBody() {
+        return String.format("Username : %s\nName : %s\nSurname : %s\nDamage Description : %s\nOther Observations : %s",
+                landslideInfo.getUsername(),
+                landslideInfo.getName(),
+                landslideInfo.getSurname(),
+                landslideInfo.getDamageDesctiption(),
+                landslideInfo.getOtherObservations()
+        );
+    }
+
+    private void setImage(Bitmap imageBitmap) {
         if (imageBitmap != null) {
+            imageList.add(imageBitmap);
             selectedImageView.setImageBitmap(imageBitmap);
         }
     }
