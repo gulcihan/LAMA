@@ -13,6 +13,7 @@ import android.text.TextUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public final class DateTimeUtil {
@@ -28,13 +29,57 @@ public final class DateTimeUtil {
     }
 
     /**
+     * Returns current year.
+     *
+     * @return current year
+     */
+    public static int getCurrentYear() {
+        return getCalendarInstance().get(Calendar.YEAR);
+    }
+
+    /**
+     * Returns current year month. Add 1 since months are started from zero.
+     *
+     * @return current month
+     */
+    public static int getCurrentMonth() {
+        return getCalendarInstance().get(Calendar.MONTH) + 1;
+    }
+
+    /**
+     * Returns current day.
+     *
+     * @return current day
+     */
+    public static int getCurrentDay() {
+        return getCalendarInstance().get(Calendar.DAY_OF_MONTH);
+    }
+
+    /**
+     * Returns current hour.
+     *
+     * @return current hour
+     */
+    public static int getCurrentHour() {
+        return getCalendarInstance().get(Calendar.HOUR_OF_DAY);
+    }
+
+    /**
+     * Returns current minute
+     *
+     * @return current minute
+     */
+    public static int getCurrentMinute() {
+        return getCalendarInstance().get(Calendar.MINUTE);
+    }
+
+    /**
      * Converts given string to date in given format.
      *
      * @param date       to be converted to date
      * @param dateFormat date format to be used
      * @return date correspondent of string in given format or null
      */
-
     public static Date stringToDateWithFormat(String date, String dateFormat) {
         Date formattedDate = null;
 
@@ -80,6 +125,10 @@ public final class DateTimeUtil {
     public static String dateToString(Date date) {
         return dateToString(date, DATE_FORMAT_ISO_8601);
 
+    }
+
+    private static Calendar getCalendarInstance() {
+        return Calendar.getInstance();
     }
 
 }

@@ -7,4 +7,8 @@ import com.example.buyukdemircioglug.landslidealert.core.BaseView;
  */
 interface LandslideInformationView extends BaseView {
 
+    void showDatePicker();
+
+    void showTimePicker();
+
 }

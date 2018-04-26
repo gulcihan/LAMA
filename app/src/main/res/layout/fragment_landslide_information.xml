@@ -52,6 +52,84 @@
 
         </LinearLayout>
 
+        <!--Event Date-->
+        <LinearLayout
+            android:id="@+id/fragment_landslide_information_event_date_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/lama_spacing_medium"
+                android:layout_marginRight="@dimen/lama_spacing_medium"
+                android:src="@drawable/ic_calendar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fragment_landslide_information_text_view_event_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lama_spacing_default"
+                    android:text="@string/event_date_hint"
+                    android:textColor="@color/divider"
+                    android:textSize="@dimen/lama_text_size_large" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/dotted_line"
+                    android:layerType="software" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--Event Time-->
+        <LinearLayout
+            android:id="@+id/fragment_landslide_information_event_time_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/lama_spacing_medium"
+                android:layout_marginRight="@dimen/lama_spacing_medium"
+                android:src="@drawable/ic_time" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fragment_landslide_information_text_view_event_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/lama_spacing_default"
+                    android:text="@string/event_time_hint"
+                    android:textColor="@color/divider"
+                    android:textSize="@dimen/lama_text_size_large" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/dotted_line"
+                    android:layerType="software" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
         <!--Event Location-->
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/fragment_landslide_information_edit_text_event_location"

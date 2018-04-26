@@ -22,6 +22,14 @@ class LandslideInformationPresenter extends BasePresenter<LandslideInformationVi
         ));
     }
 
+    void onEventDatePickerClicked() {
+        ifViewAttached(LandslideInformationView::showDatePicker);
+    }
+
+    void onEventTimePickerClicked() {
+        ifViewAttached(LandslideInformationView::showTimePicker);
+    }
+
     private void showDateInfo() {
         final Date date = Calendar.getInstance().getTime();
         final Locale locale = ResourceRepository.getInstance().getDefaultLocale();
