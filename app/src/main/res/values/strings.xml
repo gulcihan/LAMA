@@ -28,4 +28,5 @@
     <string name="general_yes">EVET</string>
     <string name="general_no">HAYIR</string>
     <string name="image_explanation">Lütfen yeni fotoğraf yüklemek için asağıdaki resime tıklayınız.</string>
+    <string name="general_imei" translatable="false">IMEI : %1$s</string>
 </resources>

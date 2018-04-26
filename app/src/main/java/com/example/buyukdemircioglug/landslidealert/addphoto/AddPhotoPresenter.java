@@ -10,6 +10,10 @@ import com.example.buyukdemircioglug.landslidealert.util.ResourceRepository;
 
 class AddPhotoPresenter extends BasePresenter<AddPhotoView> {
 
+    void start() {
+        ifViewAttached(AddPhotoView::displayIMEINumber);
+    }
+
     void onAddPhotoButtonClicked() {
         ifViewAttached(AddPhotoView::showAddPhotoDialog);
     }

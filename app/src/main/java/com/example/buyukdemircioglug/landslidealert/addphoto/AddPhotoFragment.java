@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.canelmas.let.AskPermission;
@@ -23,6 +24,7 @@ import com.canelmas.let.DeniedPermission;
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseFragment;
 import com.example.buyukdemircioglug.landslidealert.infoform.LandslideInfo;
+import com.example.buyukdemircioglug.landslidealert.util.DeviceUtil;
 import com.example.buyukdemircioglug.landslidealert.util.ListUtil;
 import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
@@ -52,6 +54,9 @@ public class AddPhotoFragment
 
     @BindView(R.id.fragment_add_photo_image_view_four)
     ImageView imageViewFour;
+
+    @BindView(R.id.fragment_add_photo_text_view_imei)
+    TextView textViewImei;
 
     @Arg
     LandslideInfo landslideInfo;
@@ -84,7 +89,7 @@ public class AddPhotoFragment
 
     @Override
     public void onNewViewStateInstance() {
-        // No operation needed.
+        presenter.start();
     }
 
     @OnClick(R.id.fragment_add_photo_image_view_one)
@@ -114,6 +119,12 @@ public class AddPhotoFragment
     @OnClick(R.id.fragment_add_photo_button_send)
     public void onSendButtonClicked() {
         presenter.onSendButtonClicked();
+    }
+
+    @Override
+    @AskPermission(Manifest.permission.READ_PHONE_STATE)
+    public void displayIMEINumber() {
+        textViewImei.setText(getString(R.string.general_imei, DeviceUtil.getIMEINumber(getActivity())));
     }
 
     @Override
