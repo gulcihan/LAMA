@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">LAMA</string>
-    <string name="app_description">LAMA: A landslide data collection app to increase landslide hazard assessment quality</string>
+    <string name="app_description">LAMA: Bu uygulama heyelan verisi toplayarak, heyelanların
+        yarattığı tehlikelerin boyutlarını değerlendirmek icin kullanılacaktır.</string>
+    <string name="hacettepe_uni_text">HACETTEPE ÜNİVERSİTESİ</string>
     <string name="info_form_screen_title">HEYELAN BİLDİRİMİ</string>
     <string name="add_photo_screen_title">FOTOĞRAF EKLE</string>
     <string name="user_name_hint">Kullanıcı adı</string>
