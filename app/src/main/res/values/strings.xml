@@ -9,7 +9,7 @@
     <string name="name_hint">Ad</string>
     <string name="surname_hint">Soyad</string>
     <string name="injury_or_death_hint">Can kaybı ve/veya yaralı var mı?</string>
-    <string name="event_location_hint">Olay yeri</string>
+    <string name="event_location_hint">Olay yeri (Çankaya/Ankara)</string>
     <string name="event_time_hint">Olay zamanı</string>
     <string name="damage_description_hint">Hasar durumu</string>
     <string name="damage_description_info">Eğer varsa bina, yol, tarım arazisi vb. gibi yerlerin

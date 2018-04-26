@@ -52,6 +52,17 @@
 
         </LinearLayout>
 
+        <!--Event Location-->
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/fragment_landslide_information_edit_text_event_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/event_location_hint"
+            android:textCursorDrawable="@drawable/text_cursor"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/accent" />
+
+        <!--Any injury or death?-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

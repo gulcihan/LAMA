@@ -8,7 +8,7 @@
     <string name="name_hint">Name</string>
     <string name="surname_hint">Surname</string>
     <string name="injury_or_death_hint">Any injury or death?</string>
-    <string name="event_location_hint">Event location</string>
+    <string name="event_location_hint">Event location (Çankaya/Ankara)</string>
     <string name="event_time_hint">Event Time</string>
     <string name="damage_description_hint">Damage description</string>
     <string name="damage_description_info">If you see any damage on the buildings, roads,
