@@ -7,6 +7,7 @@
     <string name="user_name_hint">User name</string>
     <string name="name_hint">Name</string>
     <string name="surname_hint">Surname</string>
+    <string name="injury_or_death_hint">Any injury or death?</string>
     <string name="event_location_hint">Event location</string>
     <string name="event_time_hint">Event Time</string>
     <string name="damage_description_hint">Damage description</string>
@@ -23,5 +24,7 @@
     <string name="button_text_continue">CONTINUE</string>
     <string name="button_text_send">SEND</string>
     <string name="button_text_ok">OK</string>
+    <string name="general_yes">YES</string>
+    <string name="general_no">NO</string>
     <string name="image_explanation">Please tap to below image to upload a new one.</string>
 </resources>

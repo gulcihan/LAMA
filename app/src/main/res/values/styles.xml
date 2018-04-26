@@ -23,11 +23,11 @@
 
     <style name="LAMATextViewTheme" parent="android:Widget.TextView">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/lama_text_default</item>
+        <item name="android:textSize">@dimen/lama_text_size_default</item>
     </style>
 
     <style name="LAMATextViewTheme.Small" parent="android:Widget.TextView">
-        <item name="android:textSize">@dimen/lama_text_small</item>
+        <item name="android:textSize">@dimen/lama_text_size_small</item>
     </style>
 
 </resources>

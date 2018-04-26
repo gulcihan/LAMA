@@ -52,6 +52,40 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/lama_spacing_default"
+            android:text="@string/injury_or_death_hint"
+            android:textColor="@color/divider"
+            android:textSize="@dimen/lama_text_size_large" />
+
+        <RadioGroup
+            android:id="@+id/fragment_landslide_information_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="12dp">
+
+            <RadioButton
+                android:id="@+id/fragment_landslide_information_radio_button_yes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/general_yes"
+                android:textColor="@color/divider" />
+
+            <RadioButton
+                android:id="@+id/fragment_landslide_information_radio_button_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/general_no"
+                android:textColor="@color/divider" />
+
+        </RadioGroup>
+
         <!--Damage Description-->
         <LinearLayout
             android:layout_width="match_parent"
