@@ -22,5 +22,6 @@
     <string name="location">Konum : %1$s</string>
     <string name="button_text_continue">DEVAM</string>
     <string name="button_text_send">GÖNDER</string>
+    <string name="button_text_ok">OK</string>
     <string name="image_explanation">Lütfen yeni fotoğraf yüklemek için asağıdaki resime tıklayınız.</string>
 </resources>

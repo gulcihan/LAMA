@@ -2,6 +2,7 @@ package com.example.buyukdemircioglug.landslidealert.infoform;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,9 +59,6 @@ public class LandslideInformationFragment
 //
     @BindView(R.id.fragment_landslide_information_button_continue)
     ActionProcessButton buttonContinue;
-//
-//    @BindView(R.id.fragment_landslide_information_text_view_error)
-//    TextView textViewError;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,8 +93,32 @@ public class LandslideInformationFragment
         // No operation needed.
     }
 
+    @OnClick(R.id.fragment_landslide_information_image_view_damage_description_info)
+    public void onDamageDescriptionInfoClicked() {
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        alertDialogBuilder.setMessage(getString(R.string.damage_description_info));
+        alertDialogBuilder.setPositiveButton(getString(R.string.button_text_ok), (dialogInterface, i) -> {
+            // Do nothing.
+        });
+
+        alertDialogBuilder.create().show();
+    }
+
+    @OnClick(R.id.fragment_landslide_information_image_view_other_observations_info)
+    public void onOtherObservationsInfoClicked() {
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        alertDialogBuilder.setMessage(getString(R.string.other_observations_info));
+        alertDialogBuilder.setPositiveButton(getString(R.string.button_text_ok), (dialogInterface, i) -> {
+            // Do nothing.
+        });
+
+        alertDialogBuilder.create().show();
+    }
+
     @OnClick(R.id.fragment_landslide_information_button_continue)
-    public void onButtonContinueClicked() {
+    public void onContinueButtonClicked() {
 
         // Check for empty fields
         final String username = editTextUsername.getText().toString();
