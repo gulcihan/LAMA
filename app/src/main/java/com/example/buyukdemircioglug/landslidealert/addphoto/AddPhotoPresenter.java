@@ -6,12 +6,15 @@ import android.provider.MediaStore;
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BasePresenter;
 import com.example.buyukdemircioglug.landslidealert.core.navigation.ActivityNavigationBundle;
+import com.example.buyukdemircioglug.landslidealert.util.DateTimeUtil;
 import com.example.buyukdemircioglug.landslidealert.util.ResourceRepository;
 
 class AddPhotoPresenter extends BasePresenter<AddPhotoView> {
 
     void start() {
         ifViewAttached(AddPhotoView::displayIMEINumber);
+        ifViewAttached(AddPhotoView::showLocationData);
+        ifViewAttached(view -> view.showCurrentTime(DateTimeUtil.getTodayAndTime()));
     }
 
     void onAddPhotoButtonClicked() {

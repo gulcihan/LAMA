@@ -58,6 +58,12 @@ public class AddPhotoFragment
     @BindView(R.id.fragment_add_photo_text_view_imei)
     TextView textViewImei;
 
+    @BindView(R.id.fragment_add_photo_text_view_today)
+    TextView textViewToday;
+
+    @BindView(R.id.fragment_add_photo_text_view_location)
+    TextView textViewLocation;
+
     @Arg
     LandslideInfo landslideInfo;
 
@@ -125,6 +131,17 @@ public class AddPhotoFragment
     @AskPermission(Manifest.permission.READ_PHONE_STATE)
     public void displayIMEINumber() {
         textViewImei.setText(getString(R.string.general_imei, DeviceUtil.getIMEINumber(getActivity())));
+    }
+
+    @Override
+    public void showLocationData() {
+        // TODO location text will be set here.
+        //textViewLocation.setText("");
+    }
+
+    @Override
+    public void showCurrentTime(String today) {
+        textViewToday.setText(today);
     }
 
     @Override

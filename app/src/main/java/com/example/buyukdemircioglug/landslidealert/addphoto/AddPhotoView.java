@@ -9,6 +9,10 @@ public interface AddPhotoView extends BaseView {
 
     void displayIMEINumber();
 
+    void showLocationData();
+
+    void showCurrentTime(String today);
+
     void showAddPhotoDialog();
 
     void sendEmail();
