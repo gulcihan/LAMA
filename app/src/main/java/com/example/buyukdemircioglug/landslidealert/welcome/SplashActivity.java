@@ -9,12 +9,10 @@
 
 package com.example.buyukdemircioglug.landslidealert.welcome;
 
-import android.Manifest;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 
-import com.canelmas.let.AskPermission;
 import com.example.buyukdemircioglug.landslidealert.R;
 import com.example.buyukdemircioglug.landslidealert.core.BaseActivity;
 import com.example.buyukdemircioglug.landslidealert.infoform.MainActivity;
@@ -27,14 +25,7 @@ public class SplashActivity extends BaseActivity {
 
         final int splashDisplayLength = this.getResources().getInteger(R.integer.splash_display_length);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                navigateToUserInputScreen();
-
-            }
-        }, splashDisplayLength);
+        new Handler().postDelayed(() -> navigateToUserInputScreen(), splashDisplayLength);
     }
 
     @Override
@@ -48,10 +39,9 @@ public class SplashActivity extends BaseActivity {
         return null;
     }
 
-    @AskPermission(Manifest.permission.ACCESS_FINE_LOCATION)
     private void navigateToUserInputScreen() {
-        SplashActivity.this.startActivity(MainActivity.newIntent(SplashActivity.this));
-        SplashActivity.this.finish();
+        this.startActivity(MainActivity.newIntent(this));
+        this.finish();
     }
 
 }
