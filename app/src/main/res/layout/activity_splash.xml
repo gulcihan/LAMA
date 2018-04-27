@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/activity_splash_screen_image_view_logo"
-            android:layout_width="@dimen/splash_screen_logo_size"
-            android:layout_height="@dimen/splash_screen_logo_size"
+            android:layout_width="@dimen/default_logo_size"
+            android:layout_height="@dimen/default_logo_size"
             android:scaleType="centerInside"
             android:src="@drawable/logo_hacettepe" />
 

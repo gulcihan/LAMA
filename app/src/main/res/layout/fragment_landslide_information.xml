@@ -18,6 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/user_name_hint"
+            android:imeOptions="actionDone"
+            android:inputType="textCapWords"
+            android:maxLength="@integer/default_input_length"
             android:textCursorDrawable="@drawable/text_cursor"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/accent" />
@@ -36,6 +39,9 @@
                 android:layout_marginRight="16dp"
                 android:layout_weight="1"
                 android:hint="@string/name_hint"
+                android:imeOptions="actionDone"
+                android:inputType="textCapWords"
+                android:maxLength="@integer/default_input_length"
                 android:textCursorDrawable="@drawable/text_cursor"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="@color/accent" />
@@ -46,6 +52,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/surname_hint"
+                android:inputType="textCapWords"
+                android:maxLength="@integer/default_input_length"
                 android:textCursorDrawable="@drawable/text_cursor"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="@color/accent" />
@@ -60,8 +68,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/default_logo_size"
+                android:layout_height="@dimen/default_logo_size"
                 android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/lama_spacing_medium"
                 android:layout_marginRight="@dimen/lama_spacing_medium"
@@ -99,8 +107,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/default_logo_size"
+                android:layout_height="@dimen/default_logo_size"
                 android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/lama_spacing_medium"
                 android:layout_marginRight="@dimen/lama_spacing_medium"
@@ -136,6 +144,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/event_location_hint"
+            android:inputType="textCapWords"
+            android:maxLength="@integer/standard_input_length"
             android:textCursorDrawable="@drawable/text_cursor"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/accent" />
@@ -187,6 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/damage_description_hint"
+                android:maxLength="@integer/long_input_length"
                 android:textCursorDrawable="@drawable/text_cursor"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="@color/accent" />
@@ -212,6 +223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/other_observations_hint"
+                android:maxLength="@integer/long_input_length"
                 android:textCursorDrawable="@drawable/text_cursor"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="@color/accent" />

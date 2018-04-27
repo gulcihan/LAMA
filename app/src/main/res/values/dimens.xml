@@ -16,7 +16,7 @@
     <dimen name="lama_text_size_default">16sp</dimen>
     <dimen name="lama_text_size_large">18sp</dimen>
 
-    <dimen name="splash_screen_logo_size">36dp</dimen>
+    <dimen name="default_logo_size">36dp</dimen>
 
     <dimen name="info_logo_size">50dp</dimen>
 
