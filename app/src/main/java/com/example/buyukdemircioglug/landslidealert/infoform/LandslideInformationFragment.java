@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.dd.processbutton.iml.ActionProcessButton;
@@ -54,6 +55,9 @@ public class LandslideInformationFragment
 
     @BindView(R.id.fragment_landslide_information_edit_text_event_location)
     EditText editTextEventLocation;
+
+    @BindView(R.id.fragment_landslide_information_radio_button_yes)
+    RadioButton radioButtonYes;
 
     @BindView(R.id.fragment_landslide_information_edit_text_damage_description)
     EditText editTextDamageDescription;
@@ -216,8 +220,10 @@ public class LandslideInformationFragment
                 editTextUsername.getText().toString(),
                 editTextName.getText().toString(),
                 editTextSurname.getText().toString(),
+                textViewEventDate.getText().toString(),
+                textViewEventTime.getText().toString(),
                 editTextEventLocation.getText().toString(),
-                "15:30",
+                radioButtonYes.isChecked(),
                 editTextDamageDescription.getText().toString(),
                 editTextOtherObservations.getText().toString()
         );

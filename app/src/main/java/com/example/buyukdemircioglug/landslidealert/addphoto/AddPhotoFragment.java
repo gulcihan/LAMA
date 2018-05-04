@@ -232,11 +232,23 @@ public class AddPhotoFragment
     }
 
     private String getEmailBody() {
-        return String.format("Username : %s\nName : %s\nSurname : %s\nDamage Description : %s\nOther Observations : %s",
+        return String.format("Username : %s\n" +
+                        "Name : %s\n" +
+                        "Surname : %s\n" +
+                        "Event Date : %s\n" +
+                        "Event Time : %s\n" +
+                        "Event Location : %s\n" +
+                        "Any injury of death : %s\n" +
+                        "Damage Description : %s\n" +
+                        "Other Observations : %s",
                 landslideInfo.getUsername(),
                 landslideInfo.getName(),
                 landslideInfo.getSurname(),
-                landslideInfo.getDamageDesctiption(),
+                landslideInfo.getEventDate(),
+                landslideInfo.getEventTime(),
+                landslideInfo.getEventLocation(),
+                landslideInfo.isAnyInjuryOrDeath(),
+                landslideInfo.getDamageDescription(),
                 landslideInfo.getOtherObservations()
         );
     }

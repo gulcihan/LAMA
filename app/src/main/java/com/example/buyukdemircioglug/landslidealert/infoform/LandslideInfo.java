@@ -9,25 +9,31 @@ public class LandslideInfo implements Parcelable {
     private String username;
     private String name;
     private String surname;
-    private String eventLocation;
+    private String eventDate;
     private String eventTime;
-    private String damageDesctiption;
+    private String eventLocation;
+    private boolean anyInjuryOrDeath;
+    private String damageDescription;
     private String otherObservations;
 
     public LandslideInfo(@NonNull String username,
                          @NonNull String name,
                          @NonNull String surname,
-                         @NonNull String eventLocation,
+                         @NonNull String eventDate,
                          @NonNull String eventTime,
-                         @NonNull String damageDesctiption,
+                         @NonNull String eventLocation,
+                         boolean anyInjuryOrDeath,
+                         @NonNull String damageDescription,
                          @NonNull String otherObservations) {
 
         this.username = username;
         this.name = name;
         this.surname = surname;
-        this.eventLocation = eventLocation;
+        this.eventDate = eventDate;
         this.eventTime = eventTime;
-        this.damageDesctiption = damageDesctiption;
+        this.eventLocation = eventLocation;
+        this.anyInjuryOrDeath = anyInjuryOrDeath;
+        this.damageDescription = damageDescription;
         this.otherObservations = otherObservations;
 
     }
@@ -44,16 +50,24 @@ public class LandslideInfo implements Parcelable {
         return surname;
     }
 
-    public String getEventLocation() {
-        return eventLocation;
+    public String getEventDate() {
+        return eventDate;
     }
 
     public String getEventTime() {
         return eventTime;
     }
 
-    public String getDamageDesctiption() {
-        return damageDesctiption;
+    public String getEventLocation() {
+        return eventLocation;
+    }
+
+    public boolean isAnyInjuryOrDeath() {
+        return anyInjuryOrDeath;
+    }
+
+    public String getDamageDescription() {
+        return damageDescription;
     }
 
     public String getOtherObservations() {
@@ -70,9 +84,11 @@ public class LandslideInfo implements Parcelable {
         dest.writeString(this.username);
         dest.writeString(this.name);
         dest.writeString(this.surname);
-        dest.writeString(this.eventLocation);
+        dest.writeString(this.eventDate);
         dest.writeString(this.eventTime);
-        dest.writeString(this.damageDesctiption);
+        dest.writeString(this.eventLocation);
+        dest.writeByte(this.anyInjuryOrDeath ? (byte) 1 : (byte) 0);
+        dest.writeString(this.damageDescription);
         dest.writeString(this.otherObservations);
     }
 
@@ -80,9 +96,11 @@ public class LandslideInfo implements Parcelable {
         this.username = in.readString();
         this.name = in.readString();
         this.surname = in.readString();
-        this.eventLocation = in.readString();
+        this.eventDate = in.readString();
         this.eventTime = in.readString();
-        this.damageDesctiption = in.readString();
+        this.eventLocation = in.readString();
+        this.anyInjuryOrDeath = in.readByte() != 0;
+        this.damageDescription = in.readString();
         this.otherObservations = in.readString();
     }
 
